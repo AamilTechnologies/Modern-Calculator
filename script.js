@@ -525,6 +525,8 @@ aiResult.innerHTML =
 }
 );
 
+window.onload = function(){
+
 const solveBtn = document.getElementById("solveBtn");
 const aiInput = document.getElementById("aiInput");
 const aiResult = document.getElementById("aiResult");
@@ -544,3 +546,5 @@ aiResult.innerHTML = "Invalid Equation";
 }
 
 });
+
+};
