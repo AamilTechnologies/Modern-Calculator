@@ -665,3 +665,41 @@ color:#00d4ff;
 text-align:center;
 
 }
+
+/* OCR Upload Button */
+
+#imageInput{
+width:100%;
+padding:12px;
+background:#0b1220;
+border:2px solid #00d4ff;
+border-radius:14px;
+color:white;
+font-size:15px;
+margin-top:10px;
+margin-bottom:15px;
+cursor:pointer;
+}
+
+#imageInput::file-selector-button{
+
+background:linear-gradient(
+90deg,
+#00d4ff,
+#9333ea
+);
+
+border:none;
+padding:10px 16px;
+border-radius:10px;
+color:white;
+font-weight:600;
+cursor:pointer;
+margin-right:12px;
+}
+
+#imageInput:hover{
+
+border-color:#9333ea;
+
+}
