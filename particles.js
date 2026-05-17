@@ -1,1 +1,69 @@
-1
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const letters =
+"アァカサタナハマヤャラワガザダバパ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+const matrix = letters.split("");
+
+const fontSize = 16;
+
+const columns = canvas.width / fontSize;
+
+const drops = [];
+
+for(let x = 0; x < columns; x++){
+
+drops[x] = 1;
+
+}
+
+function draw(){
+
+ctx.fillStyle = "rgba(5,8,22,0.08)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle = "#00d4ff";
+ctx.font = fontSize + "px monospace";
+
+for(let i = 0; i < drops.length; i++){
+
+const text =
+matrix[Math.floor(Math.random() * matrix.length)];
+
+ctx.fillText(
+text,
+i * fontSize,
+drops[i] * fontSize
+);
+
+if(
+drops[i] * fontSize > canvas.height &&
+Math.random() > 0.975
+){
+
+drops[i] = 0;
+
+}
+
+drops[i]++;
+
+}
+
+requestAnimationFrame(draw);
+
+}
+
+draw();
+
+/* Resize */
+
+window.addEventListener("resize",()=>{
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+});
