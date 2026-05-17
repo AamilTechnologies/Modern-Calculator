@@ -1,36 +1,122 @@
 const display = document.getElementById("display");
+const historyBox = document.getElementById("history");
+const scientificToggle = document.getElementById("scientificToggle");
+const scientificButtons = document.getElementById("scientificButtons");
+const themeToggle = document.getElementById("themeToggle");
+const voiceBtn = document.getElementById("voiceBtn");
+const calculator = document.getElementById("calculator");
+
+let darkMode = true;
+
+/* Append */
 
 function appendValue(value){
+
 display.value += value;
+
+playClick();
+
+vibrate();
+
 }
+
+/* Clear */
 
 function clearDisplay(){
+
 display.value = "";
+
+playClick();
+
 }
 
+/* Delete */
+
 function deleteLast(){
+
 display.value = display.value.slice(0,-1);
+
+playClick();
+
 }
+
+/* Calculate */
 
 function calculate(){
 
 try{
 
-display.value = eval(display.value);
+const expression = display.value;
+
+const result = eval(expression);
+
+historyBox.innerHTML += `
+<div>${expression} = ${result}</div>
+`;
+
+display.value = result;
+
+playClick();
 
 }
-
 catch{
 
 display.value = "Error";
 
-setTimeout(()=>{
-display.value = "";
-},1500);
-
 }
 
 }
+
+/* Scientific Toggle */
+
+scientificToggle.addEventListener("click",()=>{
+
+scientificButtons.classList.toggle("hidden");
+
+playClick();
+
+});
+
+/* Dark Light Mode */
+
+themeToggle.addEventListener("click",()=>{
+
+if(darkMode){
+
+document.body.style.background = "#e5e7eb";
+
+calculator.style.background = "rgba(255,255,255,0.75)";
+
+display.style.background = "#ffffff";
+
+display.style.color = "#050816";
+
+themeToggle.innerHTML = "☀️";
+
+darkMode = false;
+
+}
+else{
+
+document.body.style.background = "#050816";
+
+calculator.style.background = "rgba(17,24,39,0.72)";
+
+display.style.background = "#111827";
+
+display.style.color = "white";
+
+themeToggle.innerHTML = "🌙";
+
+darkMode = true;
+
+}
+
+playClick();
+
+});
+
+/* Keyboard Support */
 
 document.addEventListener("keydown",(e)=>{
 
@@ -60,28 +146,101 @@ deleteLast();
 
 }
 
-else if(e.key === "Escape"){
+});
 
-clearDisplay();
+/* Haptic */
+
+function vibrate(){
+
+if(navigator.vibrate){
+
+navigator.vibrate(10);
+
+}
+
+}
+
+/* Sound */
+
+function playClick(){
+
+const audio = new Audio(
+'https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3'
+);
+
+audio.volume = 0.2;
+
+audio.play();
+
+}
+
+/* Voice Calculator */
+
+const SpeechRecognition =
+window.SpeechRecognition ||
+window.webkitSpeechRecognition;
+
+if(SpeechRecognition){
+
+const recognition = new SpeechRecognition();
+
+recognition.onresult = (event)=>{
+
+const transcript =
+event.results[0][0].transcript;
+
+display.value = transcript
+.replace(/plus/g,'+')
+.replace(/minus/g,'-')
+.replace(/into/g,'*')
+.replace(/multiply/g,'*')
+.replace(/divide/g,'/')
+.replace(/x/g,'*');
+
+};
+
+voiceBtn.addEventListener("click",()=>{
+
+recognition.start();
+
+playClick();
+
+});
+
+}
+
+/* Draggable */
+
+let isDragging = false;
+let offsetX, offsetY;
+
+calculator.addEventListener("mousedown",(e)=>{
+
+isDragging = true;
+
+offsetX = e.clientX - calculator.offsetLeft;
+offsetY = e.clientY - calculator.offsetTop;
+
+});
+
+document.addEventListener("mousemove",(e)=>{
+
+if(isDragging){
+
+calculator.style.position = "absolute";
+
+calculator.style.left =
+e.clientX - offsetX + "px";
+
+calculator.style.top =
+e.clientY - offsetY + "px";
 
 }
 
 });
 
-function updateTime(){
+document.addEventListener("mouseup",()=>{
 
-const now = new Date();
+isDragging = false;
 
-let hours = now.getHours();
-let minutes = now.getMinutes();
-
-minutes = minutes < 10 ? "0" + minutes : minutes;
-
-document.getElementById("time").innerHTML =
-hours + ":" + minutes;
-
-}
-
-setInterval(updateTime,1000);
-
-updateTime();
+});
