@@ -214,6 +214,8 @@ playClick();
 let isDragging = false;
 let offsetX, offsetY;
 
+if(window.innerWidth > 768){
+
 calculator.addEventListener("mousedown",(e)=>{
 
 isDragging = true;
