@@ -8,9 +8,9 @@
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>Ben10 Ultimate Calc</title>
+<title>CyberCalc X</title>
 
-<link rel="stylesheet" href="style.css?v=7777777">
+<link rel="stylesheet" href="style.css?v=1">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -18,152 +18,101 @@ content="width=device-width, initial-scale=1.0">
 
 <body>
 
-<!-- BACKGROUND -->
+<!-- Background -->
 
 <div class="bg"></div>
 
-<div class="energy-ring"></div>
+<!-- Calculator -->
 
-<div class="energy-ring ring2"></div>
+<div class="calculator">
 
-<!-- BEN10 DEVICE -->
+<!-- Top -->
 
-<div class="omnitrix-device">
+<div class="top-bar">
 
-<!-- TOP -->
+<h1 class="logo">CyberCalc X</h1>
 
-<div class="top-panel">
+<div class="controls">
 
-<div class="logo">
-ULTIMATE CALC
-</div>
+<button>🌙</button>
 
-<div class="top-buttons">
+<button>🎤</button>
 
-<button id="themeToggle">🟢</button>
-
-<button id="voiceBtn">🎤</button>
-
-<button id="dragBtn">⚡</button>
+<button>⚡</button>
 
 </div>
 
 </div>
 
-<!-- DISPLAY -->
-
-<div class="display-box">
+<!-- Display -->
 
 <input type="text" id="display" disabled>
 
-</div>
-
-<!-- SCI BUTTON -->
+<!-- Sci Button -->
 
 <button id="scientificToggle">
 
-ULTIMATE MODE
+Scientific Mode
 
 </button>
 
-<!-- SCIENTIFIC -->
+<!-- Buttons -->
 
-<div class="scientific-buttons hidden"
-id="scientificButtons">
+<div class="buttons">
 
-<button onclick="appendValue('Math.sin(')">sin</button>
+<button>C</button>
+<button>DEL</button>
+<button>%</button>
+<button class="op">÷</button>
 
-<button onclick="appendValue('Math.cos(')">cos</button>
+<button>7</button>
+<button>8</button>
+<button>9</button>
+<button class="op">×</button>
 
-<button onclick="appendValue('Math.tan(')">tan</button>
+<button>4</button>
+<button>5</button>
+<button>6</button>
+<button class="op">−</button>
 
-<button onclick="appendValue('Math.sqrt(')">√</button>
+<button>1</button>
+<button>2</button>
+<button>3</button>
+<button class="op">+</button>
 
-</div>
-
-<!-- CALCULATOR -->
-
-<div class="calculator-grid">
-
-<button onclick="clearDisplay()">C</button>
-
-<button onclick="deleteLast()">DEL</button>
-
-<button onclick="appendValue('%')">%</button>
-
-<button class="op" onclick="appendValue('/')">÷</button>
-
-<button onclick="appendValue('7')">7</button>
-
-<button onclick="appendValue('8')">8</button>
-
-<button onclick="appendValue('9')">9</button>
-
-<button class="op" onclick="appendValue('*')">×</button>
-
-<button onclick="appendValue('4')">4</button>
-
-<button onclick="appendValue('5')">5</button>
-
-<button onclick="appendValue('6')">6</button>
-
-<button class="op" onclick="appendValue('-')">−</button>
-
-<button onclick="appendValue('1')">1</button>
-
-<button onclick="appendValue('2')">2</button>
-
-<button onclick="appendValue('3')">3</button>
-
-<button class="op" onclick="appendValue('+')">+</button>
-
-<button class="zero"
-onclick="appendValue('0')">0</button>
-
-<button onclick="appendValue('.')">.</button>
-
-<button class="equal"
-onclick="calculate()">=</button>
+<button class="zero">0</button>
+<button>.</button>
+<button class="equal">=</button>
 
 </div>
-
-<!-- FEATURES -->
-
-<div class="feature-panels">
 
 <!-- Currency -->
 
-<div class="feature-card">
+<div class="card">
 
-<h2>💸 Currency</h2>
+<h2>💸 Currency Converter</h2>
 
-<input type="number"
-id="amount"
-placeholder="Enter Amount">
+<input type="number" placeholder="Enter Amount">
 
-<select id="fromCurrency">
-
+<select>
 <option>USD</option>
 <option>INR</option>
 <option>EUR</option>
-
 </select>
 
-<select id="toCurrency">
-
+<select>
 <option>INR</option>
 <option>USD</option>
 <option>EUR</option>
-
 </select>
 
-<button id="convertBtn">
+<button class="action-btn">
 
-Convert
+Convert Currency
 
 </button>
 
-<div id="result">
+<div class="result-box">
 
 Result Here
 
@@ -173,22 +122,20 @@ Result Here
 
 <!-- AI -->
 
-<div class="feature-card">
+<div class="card">
 
-<h2>🤖 AI Solver</h2>
+<h2>🤖 AI Math Solver</h2>
 
-<input
-type="text"
-id="aiInput"
+<input type="text"
 placeholder="2x+5=15">
 
-<button id="solveBtn">
+<button class="action-btn">
 
-Solve
+Solve Equation
 
 </button>
 
-<div id="aiResult">
+<div class="result-box">
 
 AI Answer
 
@@ -198,36 +145,27 @@ AI Answer
 
 <!-- OCR -->
 
-<div class="feature-card">
+<div class="card">
 
 <h2>📸 OCR Scanner</h2>
 
-<input
-type="file"
-id="imageInput"
-accept="image/*">
+<input type="file">
 
-<button id="scanBtn">
+<button class="action-btn">
 
 Scan Equation
 
 </button>
 
-<div id="ocrResult">
+<div class="result-box">
 
-Equation result
-
-</div>
+Equation Result
 
 </div>
 
 </div>
 
 </div>
-
-<script src="https://unpkg.com/tesseract.js@v5.0.4/dist/tesseract.min.js"></script>
-
-<script defer src="script.js?v=999"></script>
 
 </body>
 
