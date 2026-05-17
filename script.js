@@ -504,31 +504,3 @@ aiResult.innerHTML =
 "Unsupported equation 😭";
 
 }
-
-window.onload = function(){
-
-const solveBtn = document.getElementById("solveBtn");
-const aiInput = document.getElementById("aiInput");
-const aiResult = document.getElementById("aiResult");
-
-if(solveBtn){
-
-solveBtn.addEventListener("click", ()=>{
-
-try{
-
-const answer = eval(aiInput.value);
-
-aiResult.innerHTML = "Answer: " + answer;
-
-}catch{
-
-aiResult.innerHTML = "Invalid Equation";
-
-}
-
-});
-
-}
-
-};
