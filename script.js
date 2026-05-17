@@ -501,6 +501,7 @@ aiResult.innerHTML =
 
 }
 
+
 /* OCR Scanner */
 
 const imageInput =
