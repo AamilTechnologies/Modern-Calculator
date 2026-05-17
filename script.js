@@ -363,6 +363,21 @@ playClick();
 }
 );
 
+/* Hide Loader */
+
+setTimeout(()=>{
+
+const loader =
+document.getElementById("loader");
+
+if(loader){
+
+loader.style.display = "none";
+
+}
+
+},2000);
+
 /* PWA */
 
 if('serviceWorker' in navigator){
@@ -379,20 +394,7 @@ console.log("PWA Ready");
 
 }
 
-setTimeout(()=>{
-
-const loader =
-document.getElementById("loader");
-
-if(loader){
-
-loader.style.display = "none";
-
-}
-
-},2000);
-
-/* PWA Install Popup */
+/* Install Popup */
 
 let deferredPrompt;
 
@@ -447,6 +449,12 @@ installPopup.style.display =
 }
 );
 
+/* AI Math Solver */
+
+document.addEventListener(
+"DOMContentLoaded",
+function(){
+
 const solveBtn =
 document.getElementById("solveBtn");
 
@@ -455,30 +463,47 @@ document.getElementById("aiInput");
 
 const aiResult =
 document.getElementById("aiResult");
-document.addEventListener("DOMContentLoaded", function(){
-
-const solveBtn = document.getElementById("solveBtn");
-const aiInput = document.getElementById("aiInput");
-const aiResult = document.getElementById("aiResult");
 
 if(solveBtn){
 
-solveBtn.onclick = function(){
+solveBtn.addEventListener(
+"click",
+function(){
 
 try{
 
-const answer = eval(aiInput.value);
+const equation =
+aiInput.value.trim();
 
-aiResult.innerHTML = "Answer: " + answer;
+if(equation === ""){
 
-}catch{
+aiResult.innerHTML =
+"Enter Equation";
 
-aiResult.innerHTML = "Invalid Equation";
-
-}
-
-};
+return;
 
 }
 
-});
+const answer =
+eval(equation);
+
+aiResult.innerHTML =
+"Answer: " + answer;
+
+playClick();
+
+}
+catch{
+
+aiResult.innerHTML =
+"Invalid Equation";
+
+}
+
+}
+);
+
+}
+
+}
+);
