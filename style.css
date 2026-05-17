@@ -46,6 +46,7 @@ z-index:0;
 /* Loader */
 
 #loader{
+transition:opacity 0.5s ease;
 position:fixed;
 width:100%;
 height:100%;
