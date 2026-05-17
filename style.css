@@ -483,31 +483,39 @@ bottom:10px;
 
 #installPopup{
 position:fixed;
-bottom:20px;
-right:20px;
-background:rgba(17,24,39,0.92);
-backdrop-filter:blur(15px);
-padding:18px;
-border-radius:22px;
+bottom:15px;
+left:50%;
+transform:translateX(-50%);
+background:rgba(10,15,30,0.92);
+backdrop-filter:blur(14px);
+padding:14px;
+border-radius:18px;
 border:1px solid rgba(255,255,255,0.08);
+
 box-shadow:
-0 0 20px rgba(0,212,255,0.25);
+0 0 25px rgba(0,212,255,0.25);
+
 display:none;
-z-index:999;
-width:260px;
+z-index:9999;
+
+width:90%;
+max-width:320px;
+
+text-align:center;
 }
 
 #installPopup p{
-margin-bottom:12px;
-font-size:16px;
+font-size:15px;
 color:white;
+margin-bottom:12px;
+line-height:1.4;
 }
 
 #installBtn{
 width:100%;
-height:52px;
+height:50px;
 border:none;
-border-radius:16px;
+border-radius:14px;
 
 background:linear-gradient(
 45deg,
@@ -517,22 +525,15 @@ background:linear-gradient(
 
 color:white;
 font-size:18px;
-font-weight:600;
+font-weight:700;
 cursor:pointer;
+
+box-shadow:
+0 0 15px rgba(0,212,255,0.3);
+
 transition:0.2s;
 }
 
-#installBtn:hover{
-transform:translateY(-2px);
-}
-
-@media(max-width:700px){
-
-#installPopup{
-left:10px;
-right:10px;
-bottom:10px;
-width:auto;
-}
-
+#installBtn:active{
+transform:scale(0.97);
 }
