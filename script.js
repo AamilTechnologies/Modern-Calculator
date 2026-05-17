@@ -256,3 +256,50 @@ navigator.serviceWorker.register('service-worker.js')
 .then(()=> console.log("PWA Ready"));
 
 }
+
+/* Currency Converter */
+
+const rates = {
+USD:1,
+INR:83,
+EUR:0.92,
+GBP:0.79,
+JPY:156
+};
+
+const amountInput =
+document.getElementById("amount");
+
+const fromCurrency =
+document.getElementById("fromCurrency");
+
+const toCurrency =
+document.getElementById("toCurrency");
+
+const convertBtn =
+document.getElementById("convertBtn");
+
+const result =
+document.getElementById("result");
+
+convertBtn.addEventListener("click",()=>{
+
+const amount = amountInput.value;
+
+const from = fromCurrency.value;
+
+const to = toCurrency.value;
+
+const usdAmount =
+amount / rates[from];
+
+const converted =
+usdAmount * rates[to];
+
+result.innerHTML =
+`${amount} ${from} = 
+${converted.toFixed(2)} ${to}`;
+
+playClick();
+
+});
