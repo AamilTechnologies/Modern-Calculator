@@ -501,3 +501,39 @@ aiResult.innerHTML =
 
 }
 
+/* OCR Scanner */
+
+const imageInput =
+document.getElementById("imageInput");
+
+const scanBtn =
+document.getElementById("scanBtn");
+
+const ocrResult =
+document.getElementById("ocrResult");
+
+scanBtn.addEventListener(
+"click",
+()=>{
+
+const file =
+imageInput.files[0];
+
+if(!file){
+
+ocrResult.innerHTML =
+"Upload image first";
+
+return;
+
+}
+
+/* Fake OCR Demo */
+
+ocrResult.innerHTML =
+"Detected: 2+2 = 4";
+
+playClick();
+
+}
+);
