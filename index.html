@@ -2,25 +2,87 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Modern Calculator</title>
+<title>CyberCalc X</title>
 
 <link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
-<div class="watermark">Aamil TECHNOLOGIES</div>
 
-<div class="calculator">
+<!-- Loader -->
+
+<div id="loader">
+
+<div class="spinner"></div>
+
+<h1>CyberCalc X</h1>
+
+</div>
+
+<!-- Matrix Background -->
+
+<canvas id="matrix"></canvas>
+
+<!-- Particles -->
+
+<div id="particles-js"></div>
+
+<!-- Calculator -->
+
+<div class="calculator" id="calculator">
 
 <div class="top-bar">
+
 <div class="logo">CyberCalc X</div>
-<div class="time" id="time"></div>
+
+<div class="controls">
+
+<button id="themeToggle">🌙</button>
+
+<button id="voiceBtn">🎤</button>
+
+<button id="dragBtn">✥</button>
+
+</div>
+
 </div>
 
 <input type="text" id="display" disabled>
+
+<!-- History -->
+
+<div class="history" id="history"></div>
+
+<!-- Scientific Toggle -->
+
+<div class="toggle-container">
+
+<button id="scientificToggle">Scientific Mode</button>
+
+</div>
+
+<!-- Scientific Buttons -->
+
+<div class="scientific-buttons hidden" id="scientificButtons">
+
+<button onclick="appendValue('Math.sin(')">sin</button>
+
+<button onclick="appendValue('Math.cos(')">cos</button>
+
+<button onclick="appendValue('Math.tan(')">tan</button>
+
+<button onclick="appendValue('Math.sqrt(')">√</button>
+
+</div>
+
+<!-- Main Buttons -->
 
 <div class="buttons">
 
@@ -52,7 +114,10 @@
 
 </div>
 
+<script src="particles.js"></script>
+
 <script src="script.js"></script>
 
 </body>
+
 </html>
