@@ -67,3 +67,21 @@ clearDisplay();
 }
 
 });
+
+function updateTime(){
+
+const now = new Date();
+
+let hours = now.getHours();
+let minutes = now.getMinutes();
+
+minutes = minutes < 10 ? "0" + minutes : minutes;
+
+document.getElementById("time").innerHTML =
+hours + ":" + minutes;
+
+}
+
+setInterval(updateTime,1000);
+
+updateTime();
