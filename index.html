@@ -136,9 +136,7 @@ onclick="appendValue('0')">0</button>
 
 <div class="converter-box">
 
-<input type="number"
-id="amount"
-placeholder="Enter Amount">
+<input type="number" id="amount" placeholder="Enter Amount" onclick="event.stopPropagation()" onkeydown="event.stopPropagation()" oninput="event.stopPropagation()">
 
 <select id="fromCurrency">
 
