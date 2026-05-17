@@ -455,52 +455,30 @@ document.getElementById("aiInput");
 
 const aiResult =
 document.getElementById("aiResult");
+document.addEventListener("DOMContentLoaded", function(){
 
-solveBtn.addEventListener(
-"click",
-()=>{
+const solveBtn = document.getElementById("solveBtn");
+const aiInput = document.getElementById("aiInput");
+const aiResult = document.getElementById("aiResult");
 
-const equation =
-aiInput.value.trim();
+if(solveBtn){
 
-if(equation === ""){
-
-aiResult.innerHTML =
-"Enter an equation 😭";
-
-return;
-
-}
+solveBtn.onclick = function(){
 
 try{
 
-if(equation.includes("x")){
+const answer = eval(aiInput.value);
 
-const match =
-equation.match(
-/(\d*)x([+-]\d+)=([+-]?\d+)/
-);
+aiResult.innerHTML = "Answer: " + answer;
 
-if(match){
+}catch{
 
-const a =
-parseFloat(match[1] || 1);
-
-const b =
-parseFloat(match[2]);
-
-const c =
-parseFloat(match[3]);
-
-const x =
-(c - b) / a;
-
-aiResult.innerHTML =
-`x = ${x}`;
-
-}else{
-
-aiResult.innerHTML =
-"Unsupported equation 😭";
+aiResult.innerHTML = "Invalid Equation";
 
 }
+
+};
+
+}
+
+});
