@@ -446,3 +446,81 @@ installPopup.style.display =
 
 }
 );
+
+const solveBtn =
+document.getElementById("solveBtn");
+
+const aiInput =
+document.getElementById("aiInput");
+
+const aiResult =
+document.getElementById("aiResult");
+
+solveBtn.addEventListener(
+"click",
+()=>{
+
+const equation =
+aiInput.value.trim();
+
+if(equation === ""){
+
+aiResult.innerHTML =
+"Enter an equation 😭";
+
+return;
+
+}
+
+try{
+
+if(equation.includes("x")){
+
+const match =
+equation.match(
+/(\d*)x([+-]\d+)=([+-]?\d+)/
+);
+
+if(match){
+
+const a =
+parseFloat(match[1] || 1);
+
+const b =
+parseFloat(match[2]);
+
+const c =
+parseFloat(match[3]);
+
+const x =
+(c - b) / a;
+
+aiResult.innerHTML =
+`x = ${x}`;
+
+}else{
+
+aiResult.innerHTML =
+"Unsupported equation 😭";
+
+}
+
+}else{
+
+const answer =
+eval(equation);
+
+aiResult.innerHTML =
+`${equation} = ${answer}`;
+
+}
+
+}catch{
+
+aiResult.innerHTML =
+"Invalid equation 😭";
+
+}
+
+}
+);
