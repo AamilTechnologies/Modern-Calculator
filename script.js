@@ -504,6 +504,7 @@ aiResult.innerHTML =
 "Unsupported equation 😭";
 
 }
+
 window.onload = function(){
 
 const solveBtn = document.getElementById("solveBtn");
