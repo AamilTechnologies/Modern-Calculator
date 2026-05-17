@@ -30,9 +30,9 @@ padding:15px;
 /* Watermark */
 
 body::before{
-content:"AAMIL TECHNOLOGIES";
+content:"AAMILTECHNOLOGIES";
 position:fixed;
-bottom:20px;
+bottom:8px;
 left:50%;
 transform:translateX(-50%);
 font-size:22px;
