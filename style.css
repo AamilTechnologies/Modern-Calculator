@@ -3,10 +3,16 @@ touch-action:manipulation;
 }
 
 *{
+
+*{
 margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Poppins',sans-serif;
+}
+
+html,body{
+touch-action:manipulation;
 }
 
 body{
@@ -18,17 +24,21 @@ justify-content:center;
 align-items:center;
 color:white;
 position:relative;
+padding:15px;
 }
 
-/* Huge Watermark */
+/* Watermark */
 
 body::before{
-content:"CYBERCALC X";
-position:absolute;
-font-size:70px;
-font-weight:800;
-color:rgba(255,255,255,0.03);
-letter-spacing:8px;
+content:"AAMIL TECHNOLOGIES";
+position:fixed;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+font-size:22px;
+font-weight:700;
+letter-spacing:6px;
+color:rgba(255,255,255,0.05);
 pointer-events:none;
 z-index:0;
 }
@@ -71,7 +81,7 @@ visibility:hidden;
 }
 }
 
-/* Matrix */
+/* Matrix Background */
 
 #matrix{
 position:fixed;
@@ -95,16 +105,21 @@ z-index:-1;
 
 .calculator{
 width:600px;
+max-width:420px;
+max-height:95vh;
+overflow-y:auto;
 background:rgba(17,24,39,0.72);
 backdrop-filter:blur(20px);
 border-radius:35px;
-padding:30px;
+padding:25px;
 border:1px solid rgba(255,255,255,0.08);
+
 box-shadow:
 0 15px 50px rgba(0,0,0,0.45),
 0 0 40px rgba(0,212,255,0.15);
+
 position:relative;
-overflow:hidden;
+
 animation:float 3s ease-in-out infinite;
 }
 
@@ -116,14 +131,18 @@ position:absolute;
 inset:-2px;
 border-radius:35px;
 padding:2px;
+
 background:linear-gradient(
 45deg,
 #00d4ff,
 #7c3aed,
 #00d4ff
 );
+
 background-size:300% 300%;
+
 animation:borderAnim 6s linear infinite;
+
 z-index:-1;
 }
 
@@ -155,7 +174,7 @@ margin-bottom:20px;
 }
 
 .logo{
-font-size:22px;
+font-size:24px;
 font-weight:700;
 color:#00d4ff;
 }
@@ -188,16 +207,19 @@ color:#050816;
 
 #display{
 width:100%;
-height:120px;
+height:110px;
 border:none;
 outline:none;
-background:#111827;
+background:#0b1220;
 border-radius:25px;
-padding:25px;
-font-size:54px;
+padding:20px;
+font-size:48px;
 text-align:right;
-color:white;
+color:#00d4ff;
+font-weight:600;
 margin-bottom:20px;
+
+text-shadow:0 0 10px #00d4ff;
 
 box-shadow:
 inset 0 0 15px rgba(0,0,0,0.4),
@@ -207,7 +229,7 @@ inset 0 0 15px rgba(0,0,0,0.4),
 /* History */
 
 .history{
-height:80px;
+height:70px;
 overflow-y:auto;
 margin-bottom:15px;
 padding:10px;
@@ -228,12 +250,20 @@ width:100%;
 height:55px;
 border:none;
 border-radius:16px;
-background:linear-gradient(45deg,#00d4ff,#7c3aed);
+
+background:linear-gradient(
+45deg,
+#00d4ff,
+#7c3aed
+);
+
 color:white;
 font-size:18px;
 font-weight:600;
 cursor:pointer;
+
 box-shadow:0 0 20px rgba(0,212,255,0.25);
+
 transition:0.3s;
 }
 
@@ -251,7 +281,7 @@ margin-bottom:15px;
 }
 
 .scientific-buttons button{
-height:70px;
+height:65px;
 font-size:22px;
 }
 
@@ -264,11 +294,11 @@ display:none;
 .buttons{
 display:grid;
 grid-template-columns:repeat(4,1fr);
-gap:16px;
+gap:14px;
 }
 
 button{
-height:88px;
+height:82px;
 border:none;
 border-radius:22px;
 background:#1f2937;
@@ -276,14 +306,21 @@ color:white;
 font-size:30px;
 font-weight:600;
 cursor:pointer;
+
 transition:0.15s;
-box-shadow:0 6px 14px rgba(0,0,0,0.25);
+
+box-shadow:
+0 6px 14px rgba(0,0,0,0.25);
+
 -webkit-tap-highlight-color:transparent;
 }
 
 button:hover{
 transform:translateY(-2px);
 background:#374151;
+
+box-shadow:
+0 0 18px rgba(0,212,255,0.45);
 }
 
 button:active{
@@ -303,93 +340,10 @@ background:#00d4ff;
 color:#050816;
 }
 
-/* Zero */
+/* Zero Button */
 
 .zero{
 grid-column:span 2;
-}
-
-/* Mobile Responsive */
-
-@media(max-width:700px){
-
-body{
-padding:15px;
-align-items:center;
-justify-content:center;
-}
-
-.calculator{
-width:100%;
-max-width:420px;
-padding:18px;
-border-radius:28px;
-}
-
-.top-bar{
-margin-bottom:15px;
-}
-
-.logo{
-font-size:18px;
-}
-
-.controls button{
-width:40px;
-height:40px;
-font-size:16px;
-}
-
-#display{
-height:95px;
-font-size:38px;
-padding:18px;
-margin-bottom:16px;
-}
-
-.history{
-height:60px;
-font-size:12px;
-}
-
-#scientificToggle{
-height:50px;
-font-size:16px;
-}
-
-.scientific-buttons{
-grid-template-columns:repeat(4,1fr);
-gap:10px;
-margin-bottom:14px;
-}
-
-.scientific-buttons button{
-height:60px;
-font-size:20px;
-}
-
-.buttons{
-gap:12px;
-}
-
-button{
-height:72px;
-font-size:24px;
-border-radius:18px;
-}
-
-.zero{
-grid-column:span 2;
-}
-
-body::before{
-font-size:18px;
-letter-spacing:3px;
-top:92%;
-width:100%;
-text-align:center;
-}
-
 }
 
 /* Currency Converter */
@@ -430,7 +384,13 @@ font-size:18px;
 height:60px;
 border:none;
 border-radius:18px;
-background:linear-gradient(45deg,#00d4ff,#7c3aed);
+
+background:linear-gradient(
+45deg,
+#00d4ff,
+#7c3aed
+);
+
 color:white;
 font-size:20px;
 font-weight:600;
@@ -450,4 +410,70 @@ font-size:20px;
 text-align:center;
 color:#00d4ff;
 font-weight:600;
+}
+
+/* Mobile Responsive */
+
+@media(max-width:700px){
+
+.calculator{
+width:100%;
+padding:18px;
+border-radius:28px;
+}
+
+.logo{
+font-size:18px;
+}
+
+.controls button{
+width:40px;
+height:40px;
+font-size:16px;
+}
+
+#display{
+height:95px;
+font-size:38px;
+padding:18px;
+}
+
+.history{
+height:60px;
+font-size:12px;
+}
+
+#scientificToggle{
+height:50px;
+font-size:16px;
+}
+
+.scientific-buttons button{
+height:58px;
+font-size:18px;
+}
+
+button{
+height:72px;
+font-size:24px;
+border-radius:18px;
+}
+
+.converter input,
+.converter select{
+height:50px;
+font-size:16px;
+}
+
+#convertBtn{
+height:55px;
+font-size:18px;
+}
+
+body::before{
+font-size:14px;
+letter-spacing:3px;
+bottom:10px;
+}
+
 }
