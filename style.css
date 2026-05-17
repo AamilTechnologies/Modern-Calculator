@@ -391,3 +391,63 @@ text-align:center;
 }
 
 }
+
+/* Currency Converter */
+
+.converter{
+margin-top:20px;
+padding:18px;
+border-radius:22px;
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.06);
+}
+
+.converter h2{
+font-size:20px;
+margin-bottom:14px;
+color:#00d4ff;
+}
+
+.converter-box{
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.converter input,
+.converter select{
+height:55px;
+border:none;
+outline:none;
+border-radius:16px;
+padding:0 15px;
+background:#111827;
+color:white;
+font-size:18px;
+}
+
+#convertBtn{
+height:60px;
+border:none;
+border-radius:18px;
+background:linear-gradient(45deg,#00d4ff,#7c3aed);
+color:white;
+font-size:20px;
+font-weight:600;
+cursor:pointer;
+transition:0.2s;
+}
+
+#convertBtn:hover{
+transform:translateY(-2px);
+}
+
+#result{
+padding:14px;
+border-radius:16px;
+background:#111827;
+font-size:20px;
+text-align:center;
+color:#00d4ff;
+font-weight:600;
+}
