@@ -703,3 +703,101 @@ margin-right:12px;
 border-color:#9333ea;
 
 }
+
+/* BEN10 ULTIMATE THEME */
+
+body{
+
+background:
+linear-gradient(
+135deg,
+#b6ff00,
+#32ff7e,
+#00e676,
+#00c853
+);
+
+background-size:400% 400%;
+
+animation:ben10bg 12s ease infinite;
+
+overflow-x:hidden;
+
+}
+
+/* Animated Gradient */
+
+@keyframes ben10bg{
+
+0%{
+background-position:0% 50%;
+}
+
+50%{
+background-position:100% 50%;
+}
+
+100%{
+background-position:0% 50%;
+}
+
+}
+
+/* Floating Glow Circles */
+
+body::before,
+body::after{
+
+content:"";
+
+position:fixed;
+
+width:300px;
+height:300px;
+
+border-radius:50%;
+
+background:
+radial-gradient(
+circle,
+rgba(255,255,255,0.35),
+transparent 70%
+);
+
+animation:floatGlow 8s ease-in-out infinite;
+
+z-index:-1;
+
+}
+
+body::before{
+
+top:-80px;
+left:-80px;
+
+}
+
+body::after{
+
+bottom:-80px;
+right:-80px;
+
+animation-delay:4s;
+
+}
+
+@keyframes floatGlow{
+
+0%{
+transform:translateY(0px) scale(1);
+}
+
+50%{
+transform:translateY(-20px) scale(1.08);
+}
+
+100%{
+transform:translateY(0px) scale(1);
+}
+
+}
