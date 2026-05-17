@@ -451,10 +451,6 @@ installPopup.style.display =
 
 /* AI Math Solver */
 
-document.addEventListener(
-"DOMContentLoaded",
-function(){
-
 const solveBtn =
 document.getElementById("solveBtn");
 
@@ -505,5 +501,3 @@ aiResult.innerHTML =
 
 }
 
-}
-);
