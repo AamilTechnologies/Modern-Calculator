@@ -1,4 +1,5 @@
-const display = document.getElementById("display");
+const display =
+document.getElementById("display");
 
 const historyBox =
 document.getElementById("history");
@@ -9,20 +10,36 @@ document.getElementById("scientificToggle");
 const scientificButtons =
 document.getElementById("scientificButtons");
 
-const themeToggle =
-document.getElementById("themeToggle");
+const clickSound =
+new Audio(
+"https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"
+);
 
-const voiceBtn =
-document.getElementById("voiceBtn");
+clickSound.volume = 0.2;
 
-const calculator =
-document.getElementById("calculator");
+/* SOUND */
 
-/* Theme */
+function playClick(){
 
-let darkMode = true;
+clickSound.currentTime = 0;
 
-/* Append Value */
+clickSound.play();
+
+}
+
+/* VIBRATION */
+
+function vibrate(){
+
+if(navigator.vibrate){
+
+navigator.vibrate(10);
+
+}
+
+}
+
+/* APPEND */
 
 function appendValue(value){
 
@@ -34,7 +51,7 @@ vibrate();
 
 }
 
-/* Clear */
+/* CLEAR */
 
 function clearDisplay(){
 
@@ -44,7 +61,7 @@ playClick();
 
 }
 
-/* Delete */
+/* DELETE */
 
 function deleteLast(){
 
@@ -55,7 +72,7 @@ playClick();
 
 }
 
-/* Calculate */
+/* CALCULATE */
 
 function calculate(){
 
@@ -68,9 +85,7 @@ const result =
 eval(expression);
 
 historyBox.innerHTML += `
-<div>
-${expression} = ${result}
-</div>
+<div>${expression} = ${result}</div>
 `;
 
 display.value = result;
@@ -86,7 +101,44 @@ display.value = "Error";
 
 }
 
-/* Scientific Toggle */
+/* BUTTONS */
+
+document.querySelectorAll(".buttons button")
+.forEach(btn=>{
+
+const txt = btn.innerText;
+
+if(txt==="C"){
+
+btn.onclick = clearDisplay;
+
+}
+else if(txt==="DEL"){
+
+btn.onclick = deleteLast;
+
+}
+else if(txt==="="){
+
+btn.onclick = calculate;
+
+}
+else{
+
+btn.onclick = ()=>appendValue(
+
+txt
+.replace("×","*")
+.replace("÷","/")
+.replace("−","-")
+
+);
+
+}
+
+});
+
+/* SCIENTIFIC */
 
 scientificToggle.addEventListener(
 "click",
@@ -101,57 +153,7 @@ playClick();
 }
 );
 
-/* Theme Toggle */
-
-themeToggle.addEventListener(
-"click",
-()=>{
-
-if(darkMode){
-
-document.body.style.background =
-"#e5e7eb";
-
-calculator.style.background =
-"rgba(255,255,255,0.75)";
-
-display.style.background =
-"#ffffff";
-
-display.style.color =
-"#050816";
-
-themeToggle.innerHTML = "☀️";
-
-darkMode = false;
-
-}
-else{
-
-document.body.style.background =
-"linear-gradient(135deg,#050816,#0f172a)";
-
-calculator.style.background =
-"rgba(17,24,39,0.72)";
-
-display.style.background =
-"#0b1220";
-
-display.style.color =
-"#00d4ff";
-
-themeToggle.innerHTML = "🌙";
-
-darkMode = true;
-
-}
-
-playClick();
-
-}
-);
-
-/* Keyboard Support */
+/* KEYBOARD */
 
 document.addEventListener(
 "keydown",
@@ -171,13 +173,13 @@ appendValue(e.key);
 
 }
 
-else if(e.key === "Enter"){
+else if(e.key==="Enter"){
 
 calculate();
 
 }
 
-else if(e.key === "Backspace"){
+else if(e.key==="Backspace"){
 
 deleteLast();
 
@@ -186,166 +188,30 @@ deleteLast();
 }
 );
 
-/* Haptic */
-
-function vibrate(){
-
-if(navigator.vibrate){
-
-navigator.vibrate(10);
-
-}
-
-}
-
-/* Sound */
-
-function playClick(){
-
-const audio = new Audio(
-'https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3'
-);
-
-audio.volume = 0.2;
-
-audio.play();
-
-}
-
-/* Voice Calculator */
-
-const SpeechRecognition =
-window.SpeechRecognition ||
-window.webkitSpeechRecognition;
-
-if(SpeechRecognition){
-
-const recognition =
-new SpeechRecognition();
-
-recognition.onresult =
-(event)=>{
-
-const transcript =
-event.results[0][0].transcript;
-
-display.value =
-transcript
-.replace(/plus/g,'+')
-.replace(/minus/g,'-')
-.replace(/into/g,'*')
-.replace(/multiply/g,'*')
-.replace(/divide/g,'/')
-.replace(/x/g,'*');
-
-};
-
-voiceBtn.addEventListener(
-"click",
-()=>{
-
-recognition.start();
-
-playClick();
-
-}
-);
-
-}
-
-/* Draggable Desktop */
-
-let isDragging = false;
-
-let offsetX, offsetY;
-
-if(window.innerWidth > 768){
-
-calculator.addEventListener(
-"mousedown",
-(e)=>{
-
-isDragging = true;
-
-offsetX =
-e.clientX - calculator.offsetLeft;
-
-offsetY =
-e.clientY - calculator.offsetTop;
-
-}
-);
-
-document.addEventListener(
-"mousemove",
-(e)=>{
-
-if(isDragging){
-
-calculator.style.position =
-"absolute";
-
-calculator.style.left =
-e.clientX - offsetX + "px";
-
-calculator.style.top =
-e.clientY - offsetY + "px";
-
-}
-
-}
-);
-
-document.addEventListener(
-"mouseup",
-()=>{
-
-isDragging = false;
-
-}
-);
-
-}
-
-/* Currency Converter */
+/* CURRENCY */
 
 const rates = {
 
 USD:1,
 INR:83,
 EUR:0.92,
-GBP:0.79,
-JPY:156
+GBP:0.79
 
 };
 
-const amountInput =
-document.getElementById("amount");
-
-const fromCurrency =
-document.getElementById("fromCurrency");
-
-const toCurrency =
-document.getElementById("toCurrency");
-
-const convertBtn =
-document.getElementById("convertBtn");
-
-const result =
-document.getElementById("result");
-
-convertBtn.addEventListener(
+document.getElementById("convertBtn")
+.addEventListener(
 "click",
 ()=>{
 
 const amount =
-amountInput.value;
+document.getElementById("amount").value;
 
 const from =
-fromCurrency.value;
+document.getElementById("fromCurrency").value;
 
 const to =
-toCurrency.value;
+document.getElementById("toCurrency").value;
 
 const usdAmount =
 amount / rates[from];
@@ -353,137 +219,32 @@ amount / rates[from];
 const converted =
 usdAmount * rates[to];
 
-result.innerHTML =
-`${amount} ${from}
-=
-${converted.toFixed(2)} ${to}`;
+document.getElementById("result")
+.innerHTML =
+`${amount} ${from} = ${converted.toFixed(2)} ${to}`;
 
 playClick();
 
 }
 );
 
-/* Hide Loader */
+/* AI SOLVER */
 
-setTimeout(()=>{
-
-const loader =
-document.getElementById("loader");
-
-if(loader){
-
-loader.style.display = "none";
-
-}
-
-},2000);
-
-/* PWA */
-
-if('serviceWorker' in navigator){
-
-navigator.serviceWorker.register(
-'service-worker.js'
-)
-
-.then(()=>{
-
-console.log("PWA Ready");
-
-});
-
-}
-
-/* Install Popup */
-
-let deferredPrompt;
-
-const installPopup =
-document.getElementById(
-"installPopup"
-);
-
-const installBtn =
-document.getElementById(
-"installBtn"
-);
-
-window.addEventListener(
-'beforeinstallprompt',
-(e)=>{
-
-e.preventDefault();
-
-deferredPrompt = e;
-
-installPopup.style.display =
-"block";
-
-}
-);
-
-installBtn.addEventListener(
+document.getElementById("solveBtn")
+.addEventListener(
 "click",
-async()=>{
-
-if(deferredPrompt){
-
-deferredPrompt.prompt();
-
-const result =
-await deferredPrompt.userChoice;
-
-if(result.outcome === "accepted"){
-
-console.log("App Installed");
-
-}
-
-deferredPrompt = null;
-
-installPopup.style.display =
-"none";
-
-}
-
-}
-);
-
-/* AI Math Solver */
-
-const solveBtn =
-document.getElementById("solveBtn");
-
-const aiInput =
-document.getElementById("aiInput");
-
-const aiResult =
-document.getElementById("aiResult");
-
-if(solveBtn){
-
-solveBtn.addEventListener(
-"click",
-function(){
+()=>{
 
 try{
 
 const equation =
-aiInput.value.trim();
-
-if(equation === ""){
-
-aiResult.innerHTML =
-"Enter Equation";
-
-return;
-
-}
+document.getElementById("aiInput").value;
 
 const answer =
 eval(equation);
 
-aiResult.innerHTML =
+document.getElementById("aiResult")
+.innerHTML =
 "Answer: " + answer;
 
 playClick();
@@ -491,7 +252,8 @@ playClick();
 }
 catch{
 
-aiResult.innerHTML =
+document.getElementById("aiResult")
+.innerHTML =
 "Invalid Equation";
 
 }
@@ -499,42 +261,73 @@ aiResult.innerHTML =
 }
 );
 
-}
+/* OCR */
 
-
-/* OCR Scanner */
-
-const imageInput =
-document.getElementById("imageInput");
-
-const scanBtn =
-document.getElementById("scanBtn");
-
-const ocrResult =
-document.getElementById("ocrResult");
-
-scanBtn.addEventListener(
+document.getElementById("scanBtn")
+.addEventListener(
 "click",
-()=>{
+async()=>{
 
 const file =
-imageInput.files[0];
+document.getElementById("imageInput")
+.files[0];
 
 if(!file){
 
-ocrResult.innerHTML =
-"Upload image first";
+document.getElementById("ocrResult")
+.innerHTML =
+"Upload Image";
 
 return;
 
 }
 
-/* Fake OCR Demo */
+document.getElementById("ocrResult")
+.innerHTML =
+"Scanning...";
 
-ocrResult.innerHTML =
-"Detected: 2+2 = 4";
+const result =
+await Tesseract.recognize(
+file,
+'eng'
+);
+
+document.getElementById("ocrResult")
+.innerHTML =
+result.data.text;
 
 playClick();
 
 }
 );
+
+/* PWA */
+
+if('serviceWorker' in navigator){
+
+navigator.serviceWorker.register(
+'service-worker.js'
+);
+
+}
+
+/* NO DOUBLE TAP */
+
+let lastTouchEnd = 0;
+
+document.addEventListener(
+'touchend',
+function(event){
+
+const now =
+(new Date()).getTime();
+
+if(now-lastTouchEnd<=300){
+
+event.preventDefault();
+
+}
+
+lastTouchEnd = now;
+
+},false);
