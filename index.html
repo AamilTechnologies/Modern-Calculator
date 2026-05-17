@@ -239,3 +239,140 @@ lastTouchEnd = now;
 }, false);
 
 </script>
+
+<script>
+
+const display = document.getElementById("display");
+
+/* SOUND */
+
+const clickSound = new Audio(
+"https://cdn.pixabay.com/download/audio/2022/03/10/audio_c8c8a73467.mp3?filename=click-124467.mp3"
+);
+
+function playSound(){
+
+clickSound.currentTime = 0;
+clickSound.play();
+
+}
+
+/* APPEND */
+
+function appendValue(val){
+
+playSound();
+
+display.value += val;
+
+navigator.vibrate(20);
+
+}
+
+/* CLEAR */
+
+function clearDisplay(){
+
+playSound();
+
+display.value = "";
+
+}
+
+/* DELETE */
+
+function deleteLast(){
+
+playSound();
+
+display.value =
+display.value.slice(0,-1);
+
+}
+
+/* CALCULATE */
+
+function calculate(){
+
+playSound();
+
+try{
+
+display.value = eval(display.value);
+
+}
+catch{
+
+display.value = "Error";
+
+}
+
+}
+
+/* BUTTON EVENTS */
+
+document.querySelectorAll(".buttons button")
+.forEach(btn=>{
+
+const txt = btn.innerText;
+
+if(txt==="C"){
+
+btn.onclick = clearDisplay;
+
+}
+else if(txt==="DEL"){
+
+btn.onclick = deleteLast;
+
+}
+else if(txt==="="){
+
+btn.onclick = calculate;
+
+}
+else{
+
+btn.onclick = ()=>appendValue(
+
+txt
+.replace("×","*")
+.replace("÷","/")
+.replace("−","-")
+
+);
+
+}
+
+});
+
+/* FAST TOUCH */
+
+document.addEventListener(
+"touchstart",
+()=>{},
+{passive:true}
+);
+
+/* NO DOUBLE ZOOM */
+
+let lastTouchEnd = 0;
+
+document.addEventListener(
+'touchend',
+function(event){
+
+const now =
+(new Date()).getTime();
+
+if(now-lastTouchEnd<=300){
+
+event.preventDefault();
+
+}
+
+lastTouchEnd = now;
+
+},false);
+
+</script>
