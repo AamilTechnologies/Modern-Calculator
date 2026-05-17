@@ -1,6 +1,6 @@
-/* =========================
-ULTIMATE BEN10 CSS
-========================= */
+/* ===================================
+ULTIMATE BEN10 OMNITRIX THEME
+=================================== */
 
 *{
 margin:0;
@@ -10,32 +10,33 @@ font-family:'Poppins',sans-serif;
 }
 
 html,body{
-touch-action:manipulation;
-scroll-behavior:smooth;
+width:100%;
 overflow-x:hidden;
+scroll-behavior:smooth;
+touch-action:manipulation;
 }
 
-/* =========================
+/* ===================================
 BODY
-========================= */
+=================================== */
 
 body{
 
 min-height:100vh;
 
+padding:25px;
+
 display:flex;
 justify-content:center;
 align-items:flex-start;
 
-padding:20px;
-
 background:
 linear-gradient(
 135deg,
-#84ff00,
-#32ff7e,
-#a8ff78,
-#38ef7d
+#0f0f0f,
+#071b0a,
+#0d2b10,
+#071b0a
 );
 
 background-size:400% 400%;
@@ -44,9 +45,69 @@ animation:bgMove 10s ease infinite;
 
 position:relative;
 
+overflow-x:hidden;
+
 }
 
-/* Animated Background */
+/* Animated Green Glow */
+
+body::before,
+body::after{
+
+content:"";
+
+position:fixed;
+
+width:320px;
+height:320px;
+
+border-radius:50%;
+
+filter:blur(70px);
+
+opacity:0.4;
+
+z-index:-1;
+
+animation:blobMove 10s ease-in-out infinite;
+
+}
+
+body::before{
+
+background:#84ff00;
+
+top:-120px;
+left:-100px;
+
+}
+
+body::after{
+
+background:#00ff88;
+
+bottom:-120px;
+right:-100px;
+
+animation-delay:5s;
+
+}
+
+@keyframes blobMove{
+
+0%{
+transform:translateY(0px) scale(1);
+}
+
+50%{
+transform:translateY(-40px) scale(1.1);
+}
+
+100%{
+transform:translateY(0px) scale(1);
+}
+
+}
 
 @keyframes bgMove{
 
@@ -64,71 +125,13 @@ background-position:0% 50%;
 
 }
 
-/* Floating Blobs */
-
-body::before,
-body::after{
-
-content:"";
-
-position:fixed;
-
-width:300px;
-height:300px;
-
-border-radius:50%;
-
-filter:blur(40px);
-
-opacity:0.35;
-
-z-index:-1;
-
-animation:blobFloat 8s ease-in-out infinite;
-
-}
-
-body::before{
-
-background:#d9ff00;
-
-top:-80px;
-left:-80px;
-
-}
-
-body::after{
-
-background:#00ff88;
-
-bottom:-80px;
-right:-80px;
-
-animation-delay:4s;
-
-}
-
-@keyframes blobFloat{
-
-0%{
-transform:translateY(0px) scale(1);
-}
-
-50%{
-transform:translateY(-25px) scale(1.08);
-}
-
-100%{
-transform:translateY(0px) scale(1);
-}
-
-}
-
-/* =========================
-CALCULATOR
-========================= */
+/* ===================================
+CALCULATOR MAIN
+=================================== */
 
 .calculator{
+
+position:relative;
 
 width:100%;
 max-width:430px;
@@ -137,30 +140,28 @@ padding:22px;
 
 border-radius:45px;
 
-position:relative;
-
 background:
 linear-gradient(
 145deg,
-rgba(0,0,0,0.25),
-rgba(255,255,255,0.08)
+rgba(255,255,255,0.06),
+rgba(0,0,0,0.45)
 );
+
+border:3px solid rgba(132,255,0,0.3);
 
 backdrop-filter:blur(18px);
 
-border:4px solid rgba(255,255,255,0.18);
-
-box-shadow:
-0 0 25px rgba(0,255,100,0.35),
-0 0 60px rgba(255,255,255,0.15);
-
 overflow:hidden;
 
-animation:calcFloat 4s ease-in-out infinite;
+box-shadow:
+0 0 35px rgba(132,255,0,0.3),
+0 0 80px rgba(0,255,136,0.15);
+
+animation:calcFloat 5s ease-in-out infinite;
 
 }
 
-/* Floating */
+/* Floating Animation */
 
 @keyframes calcFloat{
 
@@ -169,7 +170,7 @@ transform:translateY(0px);
 }
 
 50%{
-transform:translateY(-8px);
+transform:translateY(-10px);
 }
 
 100%{
@@ -186,15 +187,15 @@ content:"";
 
 position:absolute;
 
-width:220px;
-height:220px;
+width:250px;
+height:250px;
 
 border-radius:50%;
 
-border:12px solid rgba(255,255,255,0.15);
+border:14px solid rgba(132,255,0,0.12);
 
-top:-100px;
-right:-80px;
+top:-120px;
+right:-120px;
 
 animation:ringRotate 12s linear infinite;
 
@@ -208,9 +209,9 @@ transform:rotate(360deg);
 
 }
 
-/* =========================
+/* ===================================
 TOP BAR
-========================= */
+=================================== */
 
 .top-bar{
 
@@ -218,7 +219,7 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 
-margin-bottom:20px;
+margin-bottom:22px;
 
 }
 
@@ -227,14 +228,16 @@ margin-bottom:20px;
 font-size:28px;
 font-weight:800;
 
-color:white;
+color:#b6ff00;
 
 text-shadow:
-0 0 10px rgba(255,255,255,0.5);
+0 0 15px rgba(132,255,0,0.6);
 
 }
 
-/* Controls */
+/* ===================================
+CONTROLS
+=================================== */
 
 .controls{
 
@@ -248,15 +251,26 @@ gap:10px;
 width:48px;
 height:48px;
 
+border:none;
+
 border-radius:16px;
 
 font-size:18px;
 
+background:
+linear-gradient(
+145deg,
+#111,
+#1f1f1f
+);
+
+color:#b6ff00;
+
 }
 
-/* =========================
+/* ===================================
 DISPLAY
-========================= */
+=================================== */
 
 #display{
 
@@ -267,35 +281,35 @@ height:120px;
 border:none;
 outline:none;
 
-border-radius:35px;
+padding:22px;
 
-padding:20px;
+border-radius:35px;
 
 background:
 linear-gradient(
 145deg,
-rgba(0,0,0,0.35),
-rgba(255,255,255,0.06)
+rgba(0,0,0,0.7),
+rgba(132,255,0,0.05)
 );
+
+color:#d4ff00;
 
 font-size:50px;
 font-weight:700;
 
 text-align:right;
 
-color:white;
-
-margin-bottom:20px;
+margin-bottom:18px;
 
 box-shadow:
-inset 0 0 20px rgba(0,0,0,0.35),
-0 0 25px rgba(255,255,255,0.12);
+inset 0 0 25px rgba(132,255,0,0.15),
+0 0 25px rgba(132,255,0,0.12);
 
 }
 
-/* =========================
+/* ===================================
 SCIENTIFIC BUTTON
-========================= */
+=================================== */
 
 #scientificToggle{
 
@@ -312,25 +326,23 @@ margin-bottom:18px;
 background:
 linear-gradient(
 90deg,
-#d4ff00,
+#b6ff00,
 #00ff88
 );
 
-color:#053b16;
+color:#071b0a;
 
 font-size:18px;
 font-weight:800;
 
-cursor:pointer;
-
 box-shadow:
-0 8px 18px rgba(0,255,100,0.35);
+0 0 25px rgba(132,255,0,0.4);
 
 }
 
-/* =========================
-BUTTONS
-========================= */
+/* ===================================
+BUTTON GRID
+=================================== */
 
 .buttons,
 .scientific-buttons{
@@ -345,42 +357,60 @@ margin-bottom:18px;
 
 }
 
-/* Main Button */
+/* Main Buttons */
 
 button{
-
-position:relative;
 
 height:78px;
 
 border:none;
 
-border-radius:26px;
-
-background:
-linear-gradient(
-145deg,
-#101828,
-#1f2937
-);
-
-color:white;
+border-radius:28px;
 
 font-size:28px;
 font-weight:700;
 
 cursor:pointer;
 
+color:white;
+
+background:
+linear-gradient(
+145deg,
+#111827,
+#1f2937
+);
+
 transition:0.18s ease;
+
+box-shadow:
+0 8px 16px rgba(0,0,0,0.35);
+
+position:relative;
 
 overflow:hidden;
 
-box-shadow:
-0 6px 14px rgba(0,0,0,0.35);
+}
+
+/* Hover */
+
+button:hover{
+
+transform:
+translateY(-5px)
+scale(1.03);
 
 }
 
-/* Glow Shine */
+/* Click */
+
+button:active{
+
+transform:scale(0.92);
+
+}
+
+/* Animated Shine */
 
 button::before{
 
@@ -412,24 +442,6 @@ left:100%;
 
 }
 
-/* Hover */
-
-button:hover{
-
-transform:
-translateY(-4px)
-scale(1.03);
-
-}
-
-/* Click */
-
-button:active{
-
-transform:scale(0.92);
-
-}
-
 /* Operators */
 
 button:nth-child(4),
@@ -441,11 +453,11 @@ button:nth-child(19){
 background:
 linear-gradient(
 145deg,
-#d4ff00,
+#b6ff00,
 #00ff88
 );
 
-color:#053b16;
+color:#071b0a;
 
 }
 
@@ -455,40 +467,40 @@ color:#053b16;
 grid-column:span 2;
 }
 
-/* =========================
-SECTIONS
-========================= */
+/* ===================================
+SECTION BOXES
+=================================== */
 
 .converter,
 .ai-solver,
 .ocr-box{
 
-margin-top:24px;
+margin-top:26px;
 
-padding:22px;
+padding:24px;
 
-border-radius:35px;
+border-radius:36px;
 
 position:relative;
+
+overflow:hidden;
 
 background:
 linear-gradient(
 145deg,
-rgba(255,255,255,0.12),
-rgba(0,0,0,0.12)
+rgba(255,255,255,0.06),
+rgba(0,0,0,0.4)
 );
 
+border:2px solid rgba(132,255,0,0.15);
+
 backdrop-filter:blur(14px);
-
-border:2px solid rgba(255,255,255,0.12);
-
-overflow:hidden;
 
 animation:sectionFloat 5s ease-in-out infinite;
 
 }
 
-/* Different Animation Delay */
+/* Different Floating */
 
 .ai-solver{
 animation-delay:1s;
@@ -505,7 +517,7 @@ transform:translateY(0px);
 }
 
 50%{
-transform:translateY(-6px);
+transform:translateY(-7px);
 }
 
 100%{
@@ -532,7 +544,7 @@ border-radius:50%;
 background:
 radial-gradient(
 circle,
-rgba(255,255,255,0.18),
+rgba(132,255,0,0.18),
 transparent 70%
 );
 
@@ -541,9 +553,9 @@ right:-80px;
 
 }
 
-/* =========================
+/* ===================================
 HEADINGS
-========================= */
+=================================== */
 
 .converter h2,
 .ai-solver h2,
@@ -556,16 +568,16 @@ text-align:center;
 
 margin-bottom:18px;
 
-color:white;
+color:#d4ff00;
 
 text-shadow:
-0 0 10px rgba(255,255,255,0.35);
+0 0 15px rgba(132,255,0,0.45);
 
 }
 
-/* =========================
+/* ===================================
 INPUTS
-========================= */
+=================================== */
 
 .converter input,
 .converter select,
@@ -581,12 +593,12 @@ padding:0 16px;
 border:none;
 outline:none;
 
-border-radius:20px;
+border-radius:22px;
 
 margin-bottom:14px;
 
 background:
-rgba(0,0,0,0.35);
+rgba(0,0,0,0.45);
 
 color:white;
 
@@ -594,14 +606,16 @@ font-size:16px;
 
 }
 
-/* OCR Upload */
+/* ===================================
+UPLOAD BUTTON
+=================================== */
 
 #imageInput{
 
 padding:12px;
 height:auto;
 
-border:2px solid rgba(255,255,255,0.18);
+border:2px solid rgba(132,255,0,0.25);
 
 }
 
@@ -610,7 +624,7 @@ border:2px solid rgba(255,255,255,0.18);
 background:
 linear-gradient(
 90deg,
-#d4ff00,
+#b6ff00,
 #00ff88
 );
 
@@ -622,7 +636,7 @@ border-radius:12px;
 
 font-weight:700;
 
-color:#053b16;
+color:#071b0a;
 
 cursor:pointer;
 
@@ -630,9 +644,9 @@ margin-right:12px;
 
 }
 
-/* =========================
+/* ===================================
 ACTION BUTTONS
-========================= */
+=================================== */
 
 #convertBtn,
 #solveBtn,
@@ -644,29 +658,30 @@ height:60px;
 
 border:none;
 
-border-radius:22px;
+border-radius:24px;
+
+margin-top:8px;
 
 background:
 linear-gradient(
 90deg,
-#d4ff00,
+#b6ff00,
 #00ff88
 );
 
-color:#053b16;
+color:#071b0a;
 
 font-size:20px;
 font-weight:800;
 
-cursor:pointer;
-
-margin-top:8px;
+box-shadow:
+0 0 25px rgba(132,255,0,0.35);
 
 }
 
-/* =========================
-RESULTS
-========================= */
+/* ===================================
+RESULT BOXES
+=================================== */
 
 #result,
 #aiResult,
@@ -674,14 +689,14 @@ RESULTS
 
 margin-top:16px;
 
-padding:16px;
+padding:18px;
 
-border-radius:20px;
+border-radius:22px;
 
 background:
-rgba(0,0,0,0.35);
+rgba(0,0,0,0.45);
 
-color:white;
+color:#d4ff00;
 
 font-size:18px;
 font-weight:700;
@@ -690,9 +705,9 @@ text-align:center;
 
 }
 
-/* =========================
-RESPONSIVE
-========================= */
+/* ===================================
+MOBILE
+=================================== */
 
 @media(max-width:700px){
 
@@ -704,9 +719,15 @@ border-radius:35px;
 
 }
 
+.logo{
+
+font-size:22px;
+
+}
+
 #display{
 
-height:95px;
+height:100px;
 
 font-size:38px;
 
@@ -720,9 +741,10 @@ font-size:24px;
 
 }
 
-.logo{
+.controls button{
 
-font-size:22px;
+width:42px;
+height:42px;
 
 }
 
