@@ -1,48 +1,98 @@
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
+const canvas =
+document.getElementById("matrix");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+const ctx =
+canvas.getContext("2d");
 
-const letters =
-"アァカサタナハマヤャラワガザダバパ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+function resizeCanvas(){
 
-const matrix = letters.split("");
+canvas.width =
+window.innerWidth;
 
-const fontSize = 16;
-
-const columns = canvas.width / fontSize;
-
-const drops = [];
-
-for(let x = 0; x < columns; x++){
-
-drops[x] = 1;
+canvas.height =
+window.innerHeight;
 
 }
 
+resizeCanvas();
+
+/* MATRIX LETTERS */
+
+const letters =
+"アァカサタナハマヤャラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+const chars =
+letters.split("");
+
+const fontSize = 16;
+
+let columns =
+Math.floor(canvas.width / fontSize);
+
+let drops =
+Array(columns).fill(1);
+
+/* DRAW */
+
 function draw(){
 
-ctx.fillStyle = "rgba(5,8,22,0.08)";
-ctx.fillRect(0,0,canvas.width,canvas.height);
+/* Transparent Trail */
 
-ctx.fillStyle = "#00d4ff";
-ctx.font = fontSize + "px monospace";
+ctx.fillStyle =
+"rgba(5,8,22,0.08)";
+
+ctx.fillRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
+
+/* Glow */
+
+ctx.shadowColor =
+"#00d4ff";
+
+ctx.shadowBlur = 10;
+
+/* Text */
+
+ctx.fillStyle =
+"#00d4ff";
+
+ctx.font =
+fontSize + "px monospace";
+
+/* Matrix */
 
 for(let i = 0; i < drops.length; i++){
 
 const text =
-matrix[Math.floor(Math.random() * matrix.length)];
+chars[
+Math.floor(
+Math.random() * chars.length
+)
+];
 
 ctx.fillText(
+
 text,
+
 i * fontSize,
+
 drops[i] * fontSize
+
 );
 
+/* Reset */
+
 if(
-drops[i] * fontSize > canvas.height &&
+
+drops[i] * fontSize >
+canvas.height &&
+
 Math.random() > 0.975
+
 ){
 
 drops[i] = 0;
@@ -53,17 +103,31 @@ drops[i]++;
 
 }
 
+/* Loop */
+
 requestAnimationFrame(draw);
 
 }
+
+/* Start */
 
 draw();
 
 /* Resize */
 
-window.addEventListener("resize",()=>{
+window.addEventListener(
+"resize",
+()=>{
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+resizeCanvas();
 
-});
+columns =
+Math.floor(
+canvas.width / fontSize
+);
+
+drops =
+Array(columns).fill(1);
+
+}
+);
