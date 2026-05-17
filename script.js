@@ -331,3 +331,179 @@ event.preventDefault();
 lastTouchEnd = now;
 
 },false);
+
+/* THEME */
+
+const themeToggle =
+document.getElementById("themeToggle");
+
+let darkMode = true;
+
+themeToggle.addEventListener(
+"click",
+()=>{
+
+playClick();
+
+if(darkMode){
+
+document.body.style.background =
+"#dbeafe";
+
+document.querySelector(".calculator")
+.style.background =
+"rgba(255,255,255,0.75)";
+
+display.style.background =
+"#ffffff";
+
+display.style.color =
+"#111827";
+
+themeToggle.innerHTML = "☀️";
+
+darkMode = false;
+
+}
+else{
+
+document.body.style.background =
+"#050816";
+
+document.querySelector(".calculator")
+.style.background =
+"linear-gradient(145deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))";
+
+display.style.background =
+"#0b1220";
+
+display.style.color =
+"#00d4ff";
+
+themeToggle.innerHTML = "🌙";
+
+darkMode = true;
+
+}
+
+}
+);
+
+/* VOICE */
+
+const voiceBtn =
+document.getElementById("voiceBtn");
+
+const SpeechRecognition =
+window.SpeechRecognition ||
+window.webkitSpeechRecognition;
+
+if(SpeechRecognition){
+
+const recognition =
+new SpeechRecognition();
+
+recognition.lang = "en-US";
+
+recognition.onresult =
+(event)=>{
+
+let transcript =
+event.results[0][0].transcript;
+
+transcript =
+transcript
+.replace(/plus/g,'+')
+.replace(/minus/g,'-')
+.replace(/multiply/g,'*')
+.replace(/into/g,'*')
+.replace(/divide/g,'/')
+.replace(/x/g,'*');
+
+display.value = transcript;
+
+calculate();
+
+};
+
+voiceBtn.addEventListener(
+"click",
+()=>{
+
+playClick();
+
+recognition.start();
+
+}
+);
+
+}
+
+/* DRAG */
+
+const calculator =
+document.querySelector(".calculator");
+
+const dragBtn =
+document.getElementById("dragBtn");
+
+let isDragging = false;
+
+let offsetX = 0;
+let offsetY = 0;
+
+dragBtn.addEventListener(
+"click",
+()=>{
+
+playClick();
+
+alert(
+"Drag Enabled 😎"
+);
+
+isDragging = true;
+
+}
+);
+
+calculator.addEventListener(
+"touchstart",
+(e)=>{
+
+if(!isDragging) return;
+
+const touch =
+e.touches[0];
+
+offsetX =
+touch.clientX -
+calculator.offsetLeft;
+
+offsetY =
+touch.clientY -
+calculator.offsetTop;
+
+}
+);
+
+document.addEventListener(
+"touchmove",
+(e)=>{
+
+if(!isDragging) return;
+
+const touch =
+e.touches[0];
+
+calculator.style.position =
+"absolute";
+
+calculator.style.left =
+touch.clientX - offsetX + "px";
+
+calculator.style.top =
+touch.clientY - offsetY + "px";
+
+}
+);
