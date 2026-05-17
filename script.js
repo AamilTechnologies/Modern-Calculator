@@ -391,3 +391,58 @@ loader.style.display = "none";
 }
 
 },2000);
+
+/* PWA Install Popup */
+
+let deferredPrompt;
+
+const installPopup =
+document.getElementById(
+"installPopup"
+);
+
+const installBtn =
+document.getElementById(
+"installBtn"
+);
+
+window.addEventListener(
+'beforeinstallprompt',
+(e)=>{
+
+e.preventDefault();
+
+deferredPrompt = e;
+
+installPopup.style.display =
+"block";
+
+}
+);
+
+installBtn.addEventListener(
+"click",
+async()=>{
+
+if(deferredPrompt){
+
+deferredPrompt.prompt();
+
+const result =
+await deferredPrompt.userChoice;
+
+if(result.outcome === "accepted"){
+
+console.log("App Installed");
+
+}
+
+deferredPrompt = null;
+
+installPopup.style.display =
+"none";
+
+}
+
+}
+);
