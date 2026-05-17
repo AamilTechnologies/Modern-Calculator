@@ -1,7 +1,3 @@
-/* ===================================
-ULTIMATE BEN10 OMNITRIX THEME
-=================================== */
-
 *{
 margin:0;
 padding:0;
@@ -9,199 +5,81 @@ box-sizing:border-box;
 font-family:'Poppins',sans-serif;
 }
 
-html,body{
-width:100%;
-overflow-x:hidden;
-scroll-behavior:smooth;
-touch-action:manipulation;
-}
-
-/* ===================================
-BODY
-=================================== */
-
 body{
 
+background:#021400;
+overflow-x:hidden;
 min-height:100vh;
-
-padding:25px;
-
 display:flex;
 justify-content:center;
-align-items:flex-start;
-
-background:
-linear-gradient(
-135deg,
-#0f0f0f,
-#071b0a,
-#0d2b10,
-#071b0a
-);
-
-background-size:400% 400%;
-
-animation:bgMove 10s ease infinite;
-
+align-items:center;
+padding:20px;
 position:relative;
-
-overflow-x:hidden;
 
 }
 
-/* Animated Green Glow */
+/* BACKGROUND */
 
-body::before,
-body::after{
+.bg{
 
-content:"";
+position:fixed;
+width:100%;
+height:100%;
+
+background:
+
+linear-gradient(
+180deg,
+rgba(0,0,0,0.6),
+rgba(0,40,0,0.9)
+),
+
+url('https://wallpapercave.com/wp/wp13196395.jpg');
+
+background-size:cover;
+background-position:center;
+
+filter:brightness(0.5);
+
+z-index:-5;
+
+}
+
+/* ENERGY */
+
+.energy-ring{
 
 position:fixed;
 
-width:320px;
-height:320px;
+width:500px;
+height:500px;
 
 border-radius:50%;
 
-filter:blur(70px);
-
-opacity:0.4;
-
-z-index:-1;
-
-animation:blobMove 10s ease-in-out infinite;
-
-}
-
-body::before{
-
-background:#84ff00;
-
-top:-120px;
-left:-100px;
-
-}
-
-body::after{
-
-background:#00ff88;
-
-bottom:-120px;
-right:-100px;
-
-animation-delay:5s;
-
-}
-
-@keyframes blobMove{
-
-0%{
-transform:translateY(0px) scale(1);
-}
-
-50%{
-transform:translateY(-40px) scale(1.1);
-}
-
-100%{
-transform:translateY(0px) scale(1);
-}
-
-}
-
-@keyframes bgMove{
-
-0%{
-background-position:0% 50%;
-}
-
-50%{
-background-position:100% 50%;
-}
-
-100%{
-background-position:0% 50%;
-}
-
-}
-
-/* ===================================
-CALCULATOR MAIN
-=================================== */
-
-.calculator{
-
-position:relative;
-
-width:100%;
-max-width:430px;
-
-padding:22px;
-
-border-radius:45px;
-
-background:
-linear-gradient(
-145deg,
-rgba(255,255,255,0.06),
-rgba(0,0,0,0.45)
-);
-
-border:3px solid rgba(132,255,0,0.3);
-
-backdrop-filter:blur(18px);
-
-overflow:hidden;
-
-box-shadow:
-0 0 35px rgba(132,255,0,0.3),
-0 0 80px rgba(0,255,136,0.15);
-
-animation:calcFloat 5s ease-in-out infinite;
-
-}
-
-/* Floating Animation */
-
-@keyframes calcFloat{
-
-0%{
-transform:translateY(0px);
-}
-
-50%{
-transform:translateY(-10px);
-}
-
-100%{
-transform:translateY(0px);
-}
-
-}
-
-/* Omnitrix Ring */
-
-.calculator::before{
-
-content:"";
-
-position:absolute;
-
-width:250px;
-height:250px;
-
-border-radius:50%;
-
-border:14px solid rgba(132,255,0,0.12);
+border:10px solid rgba(100,255,0,0.15);
 
 top:-120px;
 right:-120px;
 
-animation:ringRotate 12s linear infinite;
+animation:spin 12s linear infinite;
 
 }
 
-@keyframes ringRotate{
+.ring2{
+
+width:350px;
+height:350px;
+
+left:-80px;
+bottom:-80px;
+top:auto;
+right:auto;
+
+animation-direction:reverse;
+
+}
+
+@keyframes spin{
 
 100%{
 transform:rotate(360deg);
@@ -209,513 +87,399 @@ transform:rotate(360deg);
 
 }
 
-/* ===================================
-TOP BAR
-=================================== */
+/* DEVICE */
 
-.top-bar{
+.omnitrix-device{
+
+width:100%;
+max-width:430px;
+
+background:
+linear-gradient(
+145deg,
+rgba(0,0,0,0.85),
+rgba(20,40,20,0.85)
+);
+
+border:4px solid #7dff00;
+
+border-radius:45px;
+
+padding:22px;
+
+box-shadow:
+
+0 0 25px rgba(115,255,0,0.6),
+
+0 0 60px rgba(0,255,0,0.25);
+
+backdrop-filter:blur(15px);
+
+position:relative;
+
+overflow:hidden;
+
+animation:float 4s ease-in-out infinite;
+
+}
+
+/* FLOAT */
+
+@keyframes float{
+
+0%,100%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-10px);
+}
+
+}
+
+/* TOP */
+
+.top-panel{
 
 display:flex;
 justify-content:space-between;
 align-items:center;
 
-margin-bottom:22px;
+margin-bottom:20px;
 
 }
 
 .logo{
 
-font-size:28px;
+font-size:30px;
 font-weight:800;
-
-color:#b6ff00;
+color:#b7ff00;
 
 text-shadow:
-0 0 15px rgba(132,255,0,0.6);
+0 0 20px #7dff00;
 
 }
 
-/* ===================================
-CONTROLS
-=================================== */
-
-.controls{
+.top-buttons{
 
 display:flex;
 gap:10px;
 
 }
 
-.controls button{
+.top-buttons button{
 
-width:48px;
-height:48px;
+width:50px;
+height:50px;
 
 border:none;
 
-border-radius:16px;
+border-radius:18px;
 
-font-size:18px;
+background:#111;
 
-background:
-linear-gradient(
-145deg,
-#111,
-#1f1f1f
-);
+color:#7dff00;
 
-color:#b6ff00;
+font-size:20px;
+
+cursor:pointer;
+
+box-shadow:
+0 0 15px rgba(115,255,0,0.4);
 
 }
 
-/* ===================================
-DISPLAY
-=================================== */
+/* DISPLAY */
+
+.display-box{
+
+margin-bottom:18px;
+
+}
 
 #display{
 
 width:100%;
-
-height:120px;
+height:110px;
 
 border:none;
 outline:none;
 
-padding:22px;
+border-radius:30px;
 
-border-radius:35px;
+background:#050505;
 
-background:
-linear-gradient(
-145deg,
-rgba(0,0,0,0.7),
-rgba(132,255,0,0.05)
-);
+color:#7dff00;
 
-color:#d4ff00;
-
-font-size:50px;
+font-size:42px;
 font-weight:700;
+
+padding:20px;
 
 text-align:right;
 
-margin-bottom:18px;
-
 box-shadow:
-inset 0 0 25px rgba(132,255,0,0.15),
-0 0 25px rgba(132,255,0,0.12);
+
+inset 0 0 20px rgba(115,255,0,0.2),
+
+0 0 20px rgba(115,255,0,0.25);
 
 }
 
-/* ===================================
-SCIENTIFIC BUTTON
-=================================== */
+/* MODE */
 
 #scientificToggle{
 
 width:100%;
-
-height:58px;
+height:65px;
 
 border:none;
 
-border-radius:22px;
+border-radius:25px;
 
 margin-bottom:18px;
 
 background:
 linear-gradient(
 90deg,
-#b6ff00,
-#00ff88
+#b7ff00,
+#00ff73
 );
 
-color:#071b0a;
-
-font-size:18px;
+font-size:20px;
 font-weight:800;
 
-box-shadow:
-0 0 25px rgba(132,255,0,0.4);
+cursor:pointer;
 
 }
 
-/* ===================================
-BUTTON GRID
-=================================== */
+/* SCI */
 
-.buttons,
 .scientific-buttons{
 
 display:grid;
 
 grid-template-columns:repeat(4,1fr);
 
-gap:14px;
+gap:12px;
 
 margin-bottom:18px;
 
 }
 
-/* Main Buttons */
+.hidden{
+display:none;
+}
 
-button{
+/* GRID */
+
+.calculator-grid{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:15px;
+
+}
+
+/* BUTTONS */
+
+.calculator-grid button,
+.scientific-buttons button{
 
 height:78px;
 
 border:none;
 
-border-radius:28px;
+border-radius:24px;
 
-font-size:28px;
+background:#101820;
+
+color:white;
+
+font-size:32px;
 font-weight:700;
 
 cursor:pointer;
 
-color:white;
-
-background:
-linear-gradient(
-145deg,
-#111827,
-#1f2937
-);
-
-transition:0.18s ease;
+transition:0.2s;
 
 box-shadow:
-0 8px 16px rgba(0,0,0,0.35);
-
-position:relative;
-
-overflow:hidden;
+0 8px 18px rgba(0,0,0,0.4);
 
 }
 
-/* Hover */
+.calculator-grid button:hover{
 
-button:hover{
-
-transform:
-translateY(-5px)
-scale(1.03);
+transform:translateY(-3px);
 
 }
 
-/* Click */
-
-button:active{
-
-transform:scale(0.92);
-
-}
-
-/* Animated Shine */
-
-button::before{
-
-content:"";
-
-position:absolute;
-
-top:0;
-left:-100%;
-
-width:100%;
-height:100%;
+.op,
+.equal{
 
 background:
 linear-gradient(
-90deg,
-transparent,
-rgba(255,255,255,0.25),
-transparent
-);
+180deg,
+#b7ff00,
+#00ff73
+)!important;
 
-transition:0.5s;
-
-}
-
-button:hover::before{
-
-left:100%;
+color:#021400!important;
 
 }
-
-/* Operators */
-
-button:nth-child(4),
-button:nth-child(8),
-button:nth-child(12),
-button:nth-child(16),
-button:nth-child(19){
-
-background:
-linear-gradient(
-145deg,
-#b6ff00,
-#00ff88
-);
-
-color:#071b0a;
-
-}
-
-/* Zero */
 
 .zero{
+
 grid-column:span 2;
+
 }
 
-/* ===================================
-SECTION BOXES
-=================================== */
+/* FEATURES */
 
-.converter,
-.ai-solver,
-.ocr-box{
+.feature-panels{
 
-margin-top:26px;
+margin-top:25px;
 
-padding:24px;
+display:flex;
+flex-direction:column;
 
-border-radius:36px;
+gap:20px;
 
-position:relative;
+}
 
-overflow:hidden;
+/* CARD */
+
+.feature-card{
+
+padding:22px;
+
+border-radius:28px;
 
 background:
 linear-gradient(
 145deg,
-rgba(255,255,255,0.06),
-rgba(0,0,0,0.4)
+rgba(30,30,30,0.85),
+rgba(10,50,10,0.7)
 );
 
-border:2px solid rgba(132,255,0,0.15);
+border:2px solid rgba(140,255,0,0.25);
 
-backdrop-filter:blur(14px);
+box-shadow:
+0 0 20px rgba(115,255,0,0.15);
 
-animation:sectionFloat 5s ease-in-out infinite;
-
-}
-
-/* Different Floating */
-
-.ai-solver{
-animation-delay:1s;
-}
-
-.ocr-box{
-animation-delay:2s;
-}
-
-@keyframes sectionFloat{
-
-0%{
-transform:translateY(0px);
-}
-
-50%{
-transform:translateY(-7px);
-}
-
-100%{
-transform:translateY(0px);
-}
+transform:rotate(-1deg);
 
 }
 
-/* Section Glow */
+.feature-card:nth-child(2){
 
-.converter::before,
-.ai-solver::before,
-.ocr-box::before{
-
-content:"";
-
-position:absolute;
-
-width:180px;
-height:180px;
-
-border-radius:50%;
-
-background:
-radial-gradient(
-circle,
-rgba(132,255,0,0.18),
-transparent 70%
-);
-
-top:-80px;
-right:-80px;
+transform:rotate(1deg);
 
 }
 
-/* ===================================
-HEADINGS
-=================================== */
+.feature-card:nth-child(3){
 
-.converter h2,
-.ai-solver h2,
-.ocr-box h2{
+transform:rotate(-2deg);
+
+}
+
+.feature-card h2{
+
+margin-bottom:15px;
+
+color:#b7ff00;
 
 font-size:24px;
-font-weight:800;
-
-text-align:center;
-
-margin-bottom:18px;
-
-color:#d4ff00;
-
-text-shadow:
-0 0 15px rgba(132,255,0,0.45);
 
 }
 
-/* ===================================
-INPUTS
-=================================== */
+/* INPUTS */
 
-.converter input,
-.converter select,
-#aiInput,
-#imageInput{
+.feature-card input,
+.feature-card select{
 
 width:100%;
 
 height:58px;
 
-padding:0 16px;
+margin-bottom:14px;
 
 border:none;
 outline:none;
 
-border-radius:22px;
+border-radius:18px;
 
-margin-bottom:14px;
+padding:15px;
 
-background:
-rgba(0,0,0,0.45);
+background:#050505;
 
 color:white;
 
-font-size:16px;
+font-size:17px;
 
 }
 
-/* ===================================
-UPLOAD BUTTON
-=================================== */
+/* FEATURE BUTTONS */
 
-#imageInput{
-
-padding:12px;
-height:auto;
-
-border:2px solid rgba(132,255,0,0.25);
-
-}
-
-#imageInput::file-selector-button{
-
-background:
-linear-gradient(
-90deg,
-#b6ff00,
-#00ff88
-);
-
-border:none;
-
-padding:10px 16px;
-
-border-radius:12px;
-
-font-weight:700;
-
-color:#071b0a;
-
-cursor:pointer;
-
-margin-right:12px;
-
-}
-
-/* ===================================
-ACTION BUTTONS
-=================================== */
-
-#convertBtn,
-#solveBtn,
-#scanBtn{
+.feature-card button{
 
 width:100%;
 
-height:60px;
+height:58px;
 
 border:none;
 
-border-radius:24px;
-
-margin-top:8px;
+border-radius:20px;
 
 background:
 linear-gradient(
 90deg,
-#b6ff00,
-#00ff88
+#b7ff00,
+#00ff73
 );
 
-color:#071b0a;
-
-font-size:20px;
+font-size:18px;
 font-weight:800;
 
-box-shadow:
-0 0 25px rgba(132,255,0,0.35);
+color:#021400;
+
+cursor:pointer;
+
+margin-bottom:14px;
 
 }
 
-/* ===================================
-RESULT BOXES
-=================================== */
+/* RESULT */
 
 #result,
 #aiResult,
 #ocrResult{
 
-margin-top:16px;
+padding:16px;
 
-padding:18px;
+border-radius:18px;
 
-border-radius:22px;
+background:#050505;
 
-background:
-rgba(0,0,0,0.45);
-
-color:#d4ff00;
-
-font-size:18px;
-font-weight:700;
+color:#b7ff00;
 
 text-align:center;
 
+font-weight:700;
+
 }
 
-/* ===================================
-MOBILE
-=================================== */
+/* MOBILE */
 
 @media(max-width:700px){
 
-.calculator{
-
-padding:18px;
+.omnitrix-device{
 
 border-radius:35px;
+
+padding:18px;
 
 }
 
@@ -725,26 +489,20 @@ font-size:22px;
 
 }
 
-#display{
-
-height:100px;
-
-font-size:38px;
-
-}
-
-button{
+.calculator-grid button,
+.scientific-buttons button{
 
 height:70px;
 
-font-size:24px;
+font-size:25px;
 
 }
 
-.controls button{
+#display{
 
-width:42px;
-height:42px;
+font-size:34px;
+
+height:95px;
 
 }
 
