@@ -170,3 +170,72 @@ Equation Result
 </body>
 
 </html>
+<script>
+const display = document.getElementById("display");
+
+function appendValue(val){
+display.value += val;
+}
+
+function clearDisplay(){
+display.value = "";
+}
+
+function deleteLast(){
+display.value = display.value.slice(0,-1);
+}
+
+function calculate(){
+try{
+display.value = eval(display.value);
+}
+catch{
+display.value = "Error";
+}
+}
+
+document.querySelectorAll(".buttons button").forEach(btn=>{
+
+const txt = btn.innerText;
+
+if(txt==="C"){
+btn.onclick=clearDisplay;
+}
+else if(txt==="DEL"){
+btn.onclick=deleteLast;
+}
+else if(txt==="="){
+btn.onclick=calculate;
+}
+else{
+
+btn.onclick=()=>appendValue(
+txt
+.replace("×","*")
+.replace("÷","/")
+.replace("−","-")
+);
+
+}
+
+});
+
+/* Disable Double Tap Zoom */
+
+let lastTouchEnd = 0;
+
+document.addEventListener(
+'touchend',
+function (event) {
+
+const now = (new Date()).getTime();
+
+if (now - lastTouchEnd <= 300) {
+event.preventDefault();
+}
+
+lastTouchEnd = now;
+
+}, false);
+
+</script>
