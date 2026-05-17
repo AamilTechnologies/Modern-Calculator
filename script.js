@@ -246,3 +246,5 @@ document.addEventListener("mouseup",()=>{
 isDragging = false;
 
 });
+
+}
