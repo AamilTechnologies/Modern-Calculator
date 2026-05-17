@@ -504,12 +504,13 @@ aiResult.innerHTML =
 "Unsupported equation 😭";
 
 }
-
 window.onload = function(){
 
 const solveBtn = document.getElementById("solveBtn");
 const aiInput = document.getElementById("aiInput");
 const aiResult = document.getElementById("aiResult");
+
+if(solveBtn){
 
 solveBtn.addEventListener("click", ()=>{
 
@@ -526,5 +527,7 @@ aiResult.innerHTML = "Invalid Equation";
 }
 
 });
+
+}
 
 };
