@@ -9,73 +9,89 @@ body{
 height:100vh;
 display:flex;
 justify-content:center;
-align-items:center;
-background:#0b1120;
+align-items:flex-start;
+padding-top:60px;
+background:#071129;
 overflow:hidden;
 position:relative;
 }
 
 body::before{
-content:"© 2026 AAMIL TECHNOLOGIES";
+content:"BENMYHERO10 TECHNOLOGIES";
 position:absolute;
 top:50%;
 left:50%;
 transform:translate(-50%,-50%);
-font-size:42px;
-font-weight:700;
-color:rgba(255,255,255,0.03);
-letter-spacing:8px;
+font-size:52px;
+font-weight:800;
+color:rgba(255,255,255,0.025);
+letter-spacing:10px;
 white-space:nowrap;
 pointer-events:none;
 }
 
+body::after{
+content:'';
+position:absolute;
+width:500px;
+height:500px;
+background:#00d4ff22;
+filter:blur(120px);
+top:-100px;
+left:-100px;
+}
+
 .calculator{
-width:430px;
-background:#111827;
-padding:25px;
-border-radius:30px;
+width:520px;
+background:rgba(17,24,39,0.92);
+padding:30px;
+border-radius:35px;
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(15px);
 box-shadow:
-0 10px 30px rgba(0,0,0,0.4),
-0 0 20px rgba(0,212,255,0.08);
+0 15px 40px rgba(0,0,0,0.45),
+0 0 30px rgba(0,212,255,0.08);
 position:relative;
 z-index:1;
 }
 
 #display{
 width:100%;
-height:110px;
+height:130px;
 border:none;
 outline:none;
-background:#1f2937;
-border-radius:20px;
-margin-bottom:20px;
-padding:20px;
-font-size:48px;
+background:#1e293b;
+border-radius:25px;
+margin-bottom:25px;
+padding:25px;
+font-size:56px;
 color:white;
 text-align:right;
 font-weight:500;
+box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
 }
 
 .buttons{
 display:grid;
 grid-template-columns:repeat(4,1fr);
-gap:14px;
+gap:18px;
 }
 
 button{
-height:85px;
+height:95px;
 border:none;
-border-radius:20px;
+border-radius:24px;
 background:#1f2937;
 color:white;
-font-size:28px;
-font-weight:500;
+font-size:32px;
+font-weight:600;
 cursor:pointer;
 transition:
 transform 0.08s ease,
 background 0.15s ease,
 box-shadow 0.15s ease;
 -webkit-tap-highlight-color:transparent;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
 }
 
 button:hover{
@@ -83,9 +99,9 @@ background:#374151;
 }
 
 button:active{
-transform:scale(0.92);
+transform:scale(0.96);
 background:#00d4ff;
-color:#0b1120;
+color:#071129;
 }
 
 .zero{
@@ -98,7 +114,7 @@ button:nth-child(12),
 button:nth-child(16),
 button:nth-child(19){
 background:#00d4ff;
-color:#0b1120;
+color:#071129;
 font-weight:700;
 }
 
@@ -107,7 +123,7 @@ button:nth-child(8):hover,
 button:nth-child(12):hover,
 button:nth-child(16):hover,
 button:nth-child(19):hover{
-background:#22e7ff;
+background:#3be7ff;
 }
 
 button:nth-child(1),
@@ -116,26 +132,28 @@ button:nth-child(3){
 background:#374151;
 }
 
-@media(max-width:500px){
+@media(max-width:700px){
 
 .calculator{
 width:95%;
-padding:20px;
+padding:22px;
 }
 
 button{
-height:75px;
-font-size:24px;
+height:82px;
+font-size:28px;
 }
 
 #display{
-height:100px;
-font-size:40px;
+height:115px;
+font-size:46px;
 }
 
 body::before{
-font-size:22px;
-letter-spacing:4px;
+font-size:24px;
+letter-spacing:5px;
+text-align:center;
+width:100%;
 }
 
 }
