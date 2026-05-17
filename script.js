@@ -303,3 +303,15 @@ ${converted.toFixed(2)} ${to}`;
 playClick();
 
 });
+
+/* Hide Loader */
+
+window.addEventListener("load",()=>{
+
+setTimeout(()=>{
+
+document.getElementById("loader").style.display = "none";
+
+},2500);
+
+});
