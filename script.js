@@ -379,8 +379,6 @@ console.log("PWA Ready");
 
 }
 
-/* Hide Loader */
-
 window.addEventListener("load",()=>{
 
 setTimeout(()=>{
