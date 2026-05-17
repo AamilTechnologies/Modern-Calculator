@@ -6,16 +6,11 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+content="width=device-width, initial-scale=1.0">
 
-<title>CyberCalc X</title>
+<title>Ben10 Ultimate Calc</title>
 
-<link rel="stylesheet" href="style.css?v=9999">
-
-<link rel="manifest" href="manifest.json">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="style.css?v=99999">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -23,51 +18,55 @@ content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable
 
 <body>
 
-<!-- Calculator -->
+<!-- BACKGROUND -->
 
-<div class="calculator" id="calculator">
+<div class="bg"></div>
 
-<!-- Top Bar -->
+<div class="energy-ring"></div>
 
-<div class="top-bar">
+<div class="energy-ring ring2"></div>
+
+<!-- BEN10 DEVICE -->
+
+<div class="omnitrix-device">
+
+<!-- TOP -->
+
+<div class="top-panel">
 
 <div class="logo">
-CyberCalc X
+ULTIMATE CALC
 </div>
 
-<div class="controls">
+<div class="top-buttons">
 
-<button id="themeToggle">🌙</button>
+<button id="themeToggle">🟢</button>
 
 <button id="voiceBtn">🎤</button>
 
-<button id="dragBtn">✥</button>
+<button id="dragBtn">⚡</button>
 
 </div>
 
 </div>
 
-<!-- Display -->
+<!-- DISPLAY -->
+
+<div class="display-box">
 
 <input type="text" id="display" disabled>
 
-<!-- History -->
+</div>
 
-<div class="history" id="history"></div>
-
-<!-- Scientific Toggle -->
-
-<div class="toggle-container">
+<!-- SCI BUTTON -->
 
 <button id="scientificToggle">
 
-Scientific Mode
+ULTIMATE MODE
 
 </button>
 
-</div>
-
-<!-- Scientific Buttons -->
+<!-- SCIENTIFIC -->
 
 <div class="scientific-buttons hidden"
 id="scientificButtons">
@@ -82,9 +81,9 @@ id="scientificButtons">
 
 </div>
 
-<!-- Main Buttons -->
+<!-- CALCULATOR -->
 
-<div class="buttons">
+<div class="calculator-grid">
 
 <button onclick="clearDisplay()">C</button>
 
@@ -92,7 +91,7 @@ id="scientificButtons">
 
 <button onclick="appendValue('%')">%</button>
 
-<button onclick="appendValue('/')">÷</button>
+<button class="op" onclick="appendValue('/')">÷</button>
 
 <button onclick="appendValue('7')">7</button>
 
@@ -100,7 +99,7 @@ id="scientificButtons">
 
 <button onclick="appendValue('9')">9</button>
 
-<button onclick="appendValue('*')">×</button>
+<button class="op" onclick="appendValue('*')">×</button>
 
 <button onclick="appendValue('4')">4</button>
 
@@ -108,7 +107,7 @@ id="scientificButtons">
 
 <button onclick="appendValue('6')">6</button>
 
-<button onclick="appendValue('-')">−</button>
+<button class="op" onclick="appendValue('-')">−</button>
 
 <button onclick="appendValue('1')">1</button>
 
@@ -116,56 +115,51 @@ id="scientificButtons">
 
 <button onclick="appendValue('3')">3</button>
 
-<button onclick="appendValue('+')">+</button>
+<button class="op" onclick="appendValue('+')">+</button>
 
 <button class="zero"
 onclick="appendValue('0')">0</button>
 
 <button onclick="appendValue('.')">.</button>
 
-<button onclick="calculate()">=</button>
+<button class="equal"
+onclick="calculate()">=</button>
 
 </div>
 
-<!-- Currency Converter -->
+<!-- FEATURES -->
 
-<div class="converter">
+<div class="feature-panels">
 
-<h2>Currency Converter</h2>
+<!-- Currency -->
 
-<div class="converter-box">
+<div class="feature-card">
 
-<input 
-type="number"
+<h2>💸 Currency</h2>
+
+<input type="number"
 id="amount"
-placeholder="Enter Amount"
-onclick="event.stopPropagation()"
-onkeydown="event.stopPropagation()"
-oninput="event.stopPropagation()">
+placeholder="Enter Amount">
 
 <select id="fromCurrency">
 
-<option value="USD">USD</option>
-<option value="INR">INR</option>
-<option value="EUR">EUR</option>
-<option value="GBP">GBP</option>
-<option value="JPY">JPY</option>
+<option>USD</option>
+<option>INR</option>
+<option>EUR</option>
 
 </select>
 
 <select id="toCurrency">
 
-<option value="INR">INR</option>
-<option value="USD">USD</option>
-<option value="EUR">EUR</option>
-<option value="GBP">GBP</option>
-<option value="JPY">JPY</option>
+<option>INR</option>
+<option>USD</option>
+<option>EUR</option>
 
 </select>
 
 <button id="convertBtn">
 
-Convert Currency
+Convert
 
 </button>
 
@@ -177,42 +171,36 @@ Result Here
 
 </div>
 
-</div>
+<!-- AI -->
 
-<!-- AI Math Solver -->
+<div class="feature-card">
 
-<div class="ai-solver">
+<h2>🤖 AI Solver</h2>
 
-<h2>AI Math Solver 🤖</h2>
-
-<div class="ai-box">
-
-<input 
+<input
 type="text"
 id="aiInput"
-placeholder="Type equation like 2x+5=15">
+placeholder="2x+5=15">
 
 <button id="solveBtn">
 
-Solve Equation
+Solve
 
 </button>
 
 <div id="aiResult">
 
-AI answer will appear here
+AI Answer
 
 </div>
 
 </div>
 
-</div>
+<!-- OCR -->
 
-<!-- OCR Math Scanner -->
+<div class="feature-card">
 
-<div class="ocr-box">
-
-<h2>OCR Math Scanner 📸</h2>
+<h2>📸 OCR Scanner</h2>
 
 <input
 type="file"
@@ -227,7 +215,7 @@ Scan Equation
 
 <div id="ocrResult">
 
-Equation result here
+Equation result
 
 </div>
 
@@ -235,21 +223,7 @@ Equation result here
 
 </div>
 
-<!-- Install Popup -->
-
-<div id="installPopup">
-
-<p>Install CyberCalc X App 🚀</p>
-
-<button id="installBtn">
-
-Install Now
-
-</button>
-
 </div>
-
-<!-- Scripts -->
 
 <script src="https://unpkg.com/tesseract.js@v5.0.4/dist/tesseract.min.js"></script>
 
