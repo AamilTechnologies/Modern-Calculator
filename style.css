@@ -106,26 +106,91 @@ z-index:-1;
 /* Calculator */
 
 .calculator{
-width:600px;
-max-width:420px;
-max-height:95vh;
-overflow-y:auto;
-background:rgba(17,24,39,0.72);
-backdrop-filter:blur(20px);
-border-radius:35px;
-padding:25px;
-border:1px solid rgba(255,255,255,0.08);
-display:flex;
+/* BEN10 CALCULATOR */
 
-flex-direction:column;
-
-box-shadow:
-0 15px 50px rgba(0,0,0,0.45),
-0 0 40px rgba(0,212,255,0.15);
+.calculator{
 
 position:relative;
 
-animation:float 3s ease-in-out infinite;
+width:95%;
+max-width:430px;
+
+padding:25px;
+
+border-radius:38px;
+
+background:
+linear-gradient(
+145deg,
+rgba(255,255,255,0.28),
+rgba(255,255,255,0.12)
+);
+
+backdrop-filter:blur(18px);
+
+border:4px solid rgba(255,255,255,0.35);
+
+box-shadow:
+0 0 25px rgba(0,255,100,0.35),
+0 0 50px rgba(255,255,255,0.18);
+
+overflow:hidden;
+
+animation:floatCalc 4s ease-in-out infinite;
+
+}
+
+/* Floating Animation */
+
+@keyframes floatCalc{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-8px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+
+/* Omnitrix Glow Ring */
+
+.calculator::before{
+
+content:"";
+
+position:absolute;
+
+width:220px;
+height:220px;
+
+border-radius:50%;
+
+border:10px solid
+rgba(255,255,255,0.18);
+
+top:-100px;
+right:-80px;
+
+animation:ringRotate 10s linear infinite;
+
+}
+
+@keyframes ringRotate{
+
+0%{
+transform:rotate(0deg);
+}
+
+100%{
+transform:rotate(360deg);
+}
+
 }
 
 /* RGB Border */
