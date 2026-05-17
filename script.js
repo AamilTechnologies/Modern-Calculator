@@ -379,21 +379,15 @@ console.log("PWA Ready");
 
 }
 
-window.addEventListener("load",()=>{
-
 setTimeout(()=>{
 
 const loader =
 document.getElementById("loader");
 
-loader.style.opacity = "0";
+if(loader){
 
-setTimeout(()=>{
+loader.style.display = "none";
 
-loader.remove();
-
-},500);
+}
 
 },2000);
-
-});
