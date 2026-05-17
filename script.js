@@ -1,14 +1,28 @@
 const display = document.getElementById("display");
-const historyBox = document.getElementById("history");
-const scientificToggle = document.getElementById("scientificToggle");
-const scientificButtons = document.getElementById("scientificButtons");
-const themeToggle = document.getElementById("themeToggle");
-const voiceBtn = document.getElementById("voiceBtn");
-const calculator = document.getElementById("calculator");
+
+const historyBox =
+document.getElementById("history");
+
+const scientificToggle =
+document.getElementById("scientificToggle");
+
+const scientificButtons =
+document.getElementById("scientificButtons");
+
+const themeToggle =
+document.getElementById("themeToggle");
+
+const voiceBtn =
+document.getElementById("voiceBtn");
+
+const calculator =
+document.getElementById("calculator");
+
+/* Theme */
 
 let darkMode = true;
 
-/* Append */
+/* Append Value */
 
 function appendValue(value){
 
@@ -34,7 +48,8 @@ playClick();
 
 function deleteLast(){
 
-display.value = display.value.slice(0,-1);
+display.value =
+display.value.slice(0,-1);
 
 playClick();
 
@@ -46,12 +61,16 @@ function calculate(){
 
 try{
 
-const expression = display.value;
+const expression =
+display.value;
 
-const result = eval(expression);
+const result =
+eval(expression);
 
 historyBox.innerHTML += `
-<div>${expression} = ${result}</div>
+<div>
+${expression} = ${result}
+</div>
 `;
 
 display.value = result;
@@ -69,27 +88,38 @@ display.value = "Error";
 
 /* Scientific Toggle */
 
-scientificToggle.addEventListener("click",()=>{
+scientificToggle.addEventListener(
+"click",
+()=>{
 
-scientificButtons.classList.toggle("hidden");
+scientificButtons.classList.toggle(
+"hidden"
+);
 
 playClick();
 
-});
+}
+);
 
-/* Dark Light Mode */
+/* Theme Toggle */
 
-themeToggle.addEventListener("click",()=>{
+themeToggle.addEventListener(
+"click",
+()=>{
 
 if(darkMode){
 
-document.body.style.background = "#e5e7eb";
+document.body.style.background =
+"#e5e7eb";
 
-calculator.style.background = "rgba(255,255,255,0.75)";
+calculator.style.background =
+"rgba(255,255,255,0.75)";
 
-display.style.background = "#ffffff";
+display.style.background =
+"#ffffff";
 
-display.style.color = "#050816";
+display.style.color =
+"#050816";
 
 themeToggle.innerHTML = "☀️";
 
@@ -98,13 +128,17 @@ darkMode = false;
 }
 else{
 
-document.body.style.background = "#050816";
+document.body.style.background =
+"linear-gradient(135deg,#050816,#0f172a)";
 
-calculator.style.background = "rgba(17,24,39,0.72)";
+calculator.style.background =
+"rgba(17,24,39,0.72)";
 
-display.style.background = "#111827";
+display.style.background =
+"#0b1220";
 
-display.style.color = "white";
+display.style.color =
+"#00d4ff";
 
 themeToggle.innerHTML = "🌙";
 
@@ -114,14 +148,17 @@ darkMode = true;
 
 playClick();
 
-});
+}
+);
 
 /* Keyboard Support */
 
-document.addEventListener("keydown",(e)=>{
+document.addEventListener(
+"keydown",
+(e)=>{
 
 if(
-(e.key >= 0 && e.key <=9) ||
+(e.key >= 0 && e.key <= 9) ||
 e.key === "+" ||
 e.key === "-" ||
 e.key === "*" ||
@@ -146,7 +183,8 @@ deleteLast();
 
 }
 
-});
+}
+);
 
 /* Haptic */
 
@@ -182,14 +220,17 @@ window.webkitSpeechRecognition;
 
 if(SpeechRecognition){
 
-const recognition = new SpeechRecognition();
+const recognition =
+new SpeechRecognition();
 
-recognition.onresult = (event)=>{
+recognition.onresult =
+(event)=>{
 
 const transcript =
 event.results[0][0].transcript;
 
-display.value = transcript
+display.value =
+transcript
 .replace(/plus/g,'+')
 .replace(/minus/g,'-')
 .replace(/into/g,'*')
@@ -199,37 +240,50 @@ display.value = transcript
 
 };
 
-voiceBtn.addEventListener("click",()=>{
+voiceBtn.addEventListener(
+"click",
+()=>{
 
 recognition.start();
 
 playClick();
 
-});
+}
+);
 
 }
 
-/* Draggable */
+/* Draggable Desktop */
 
 let isDragging = false;
+
 let offsetX, offsetY;
 
 if(window.innerWidth > 768){
 
-calculator.addEventListener("mousedown",(e)=>{
+calculator.addEventListener(
+"mousedown",
+(e)=>{
 
 isDragging = true;
 
-offsetX = e.clientX - calculator.offsetLeft;
-offsetY = e.clientY - calculator.offsetTop;
+offsetX =
+e.clientX - calculator.offsetLeft;
 
-});
+offsetY =
+e.clientY - calculator.offsetTop;
 
-document.addEventListener("mousemove",(e)=>{
+}
+);
+
+document.addEventListener(
+"mousemove",
+(e)=>{
 
 if(isDragging){
 
-calculator.style.position = "absolute";
+calculator.style.position =
+"absolute";
 
 calculator.style.left =
 e.clientX - offsetX + "px";
@@ -239,32 +293,30 @@ e.clientY - offsetY + "px";
 
 }
 
-});
+}
+);
 
-document.addEventListener("mouseup",()=>{
+document.addEventListener(
+"mouseup",
+()=>{
 
 isDragging = false;
 
-});
-
 }
-
-if('serviceWorker' in navigator){
-
-navigator.serviceWorker.register('service-worker.js')
-
-.then(()=> console.log("PWA Ready"));
+);
 
 }
 
 /* Currency Converter */
 
 const rates = {
+
 USD:1,
 INR:83,
 EUR:0.92,
 GBP:0.79,
 JPY:156
+
 };
 
 const amountInput =
@@ -282,13 +334,18 @@ document.getElementById("convertBtn");
 const result =
 document.getElementById("result");
 
-convertBtn.addEventListener("click",()=>{
+convertBtn.addEventListener(
+"click",
+()=>{
 
-const amount = amountInput.value;
+const amount =
+amountInput.value;
 
-const from = fromCurrency.value;
+const from =
+fromCurrency.value;
 
-const to = toCurrency.value;
+const to =
+toCurrency.value;
 
 const usdAmount =
 amount / rates[from];
@@ -297,21 +354,44 @@ const converted =
 usdAmount * rates[to];
 
 result.innerHTML =
-`${amount} ${from} = 
+`${amount} ${from}
+=
 ${converted.toFixed(2)} ${to}`;
 
 playClick();
 
+}
+);
+
+/* PWA */
+
+if('serviceWorker' in navigator){
+
+navigator.serviceWorker.register(
+'service-worker.js'
+)
+
+.then(()=>{
+
+console.log("PWA Ready");
+
 });
+
+}
 
 /* Hide Loader */
 
-window.addEventListener("load",()=>{
+window.addEventListener(
+"load",
+()=>{
 
 setTimeout(()=>{
 
-document.getElementById("loader").style.display = "none";
+document.getElementById(
+"loader"
+).style.display = "none";
 
 },2500);
 
-});
+}
+);
