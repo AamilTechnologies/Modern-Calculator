@@ -14,6 +14,11 @@ content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable
 
 <link rel="manifest" href="manifest.json">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
@@ -26,7 +31,9 @@ content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable
 
 <div class="top-bar">
 
-<div class="logo">CyberCalc X</div>
+<div class="logo">
+CyberCalc X
+</div>
 
 <div class="controls">
 
@@ -128,7 +135,13 @@ onclick="appendValue('0')">0</button>
 
 <div class="converter-box">
 
-<input type="number" id="amount" placeholder="Enter Amount" onclick="event.stopPropagation()" onkeydown="event.stopPropagation()" oninput="event.stopPropagation()">
+<input 
+type="number"
+id="amount"
+placeholder="Enter Amount"
+onclick="event.stopPropagation()"
+onkeydown="event.stopPropagation()"
+oninput="event.stopPropagation()">
 
 <select id="fromCurrency">
 
@@ -162,6 +175,10 @@ Result Here
 
 </div>
 
+</div>
+
+</div>
+
 <!-- AI Math Solver -->
 
 <div class="ai-solver">
@@ -188,24 +205,6 @@ AI answer will appear here
 </div>
 
 </div>
-
-<script src="particles.js"></script>
-
-<script src="https://unpkg.com/tesseract.js@v5.0.4/dist/tesseract.min.js"></script>
-
-<script defer src="script.js?v=3"></script>
-
-<!-- Install Popup -->
-
-<div id="installPopup">
-
-<p>Install CyberCalc X App 🚀</p>
-
-<button id="installBtn">
-
-Install Now
-
-</button>
 
 </div>
 
@@ -234,6 +233,27 @@ Equation result here
 
 </div>
 
+</div>
+
+<!-- Install Popup -->
+
+<div id="installPopup">
+
+<p>Install CyberCalc X App 🚀</p>
+
+<button id="installBtn">
+
+Install Now
+
+</button>
+
+</div>
+
+<!-- Scripts -->
+
+<script src="https://unpkg.com/tesseract.js@v5.0.4/dist/tesseract.min.js"></script>
+
+<script defer src="script.js?v=999"></script>
 
 </body>
 
