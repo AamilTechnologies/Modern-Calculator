@@ -505,25 +505,6 @@ aiResult.innerHTML =
 
 }
 
-}else{
-
-const answer =
-eval(equation);
-
-aiResult.innerHTML =
-`${equation} = ${answer}`;
-
-}
-
-}catch{
-
-aiResult.innerHTML =
-"Invalid equation 😭";
-
-}
-
-}
-);
 window.onload = function(){
 
 const solveBtn = document.getElementById("solveBtn");
