@@ -507,3 +507,344 @@ height:95px;
 }
 
 }
+
+/* ===================================
+ULTIMATE BEN10 FINAL EFFECTS
+=================================== */
+
+/* REAL BEN10 BACKGROUND */
+
+.bg{
+
+background:
+
+linear-gradient(
+180deg,
+rgba(0,0,0,0.55),
+rgba(0,20,0,0.88)
+),
+
+url('https://images6.alphacoders.com/456/456498.jpg');
+
+background-size:cover;
+background-position:center;
+
+animation:bgZoom 18s ease-in-out infinite;
+
+}
+
+/* Slow Zoom */
+
+@keyframes bgZoom{
+
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.08);
+}
+
+100%{
+transform:scale(1);
+}
+
+}
+
+/* HOLOGRAM DISPLAY */
+
+.display-box{
+
+position:relative;
+
+overflow:hidden;
+
+border-radius:30px;
+
+}
+
+/* Scanner Line */
+
+.display-box::before{
+
+content:"";
+
+position:absolute;
+
+top:-100%;
+
+left:0;
+
+width:100%;
+height:100%;
+
+background:
+linear-gradient(
+180deg,
+transparent,
+rgba(100,255,0,0.22),
+transparent
+);
+
+animation:scannerMove 2.5s linear infinite;
+
+z-index:2;
+
+}
+
+@keyframes scannerMove{
+
+100%{
+top:100%;
+}
+
+}
+
+/* Display Glow */
+
+#display{
+
+position:relative;
+
+z-index:1;
+
+background:
+
+radial-gradient(
+circle at top,
+rgba(100,255,0,0.15),
+#020202
+);
+
+animation:displayPulse 2s ease infinite;
+
+}
+
+@keyframes displayPulse{
+
+0%,100%{
+
+box-shadow:
+inset 0 0 25px rgba(115,255,0,0.15),
+0 0 20px rgba(115,255,0,0.2);
+
+}
+
+50%{
+
+box-shadow:
+inset 0 0 40px rgba(115,255,0,0.25),
+0 0 40px rgba(115,255,0,0.45);
+
+}
+
+}
+
+/* OMNITRIX CORE */
+
+.omnitrix-device::after{
+
+content:"";
+
+position:absolute;
+
+width:170px;
+height:170px;
+
+border-radius:50%;
+
+top:-70px;
+right:-70px;
+
+background:
+
+radial-gradient(
+circle,
+rgba(100,255,0,0.45),
+rgba(0,0,0,0)
+);
+
+animation:coreRotate 10s linear infinite;
+
+}
+
+@keyframes coreRotate{
+
+100%{
+transform:rotate(360deg);
+}
+
+}
+
+/* FEATURE FLOAT */
+
+.feature-card{
+
+animation:featureFloat 5s ease-in-out infinite;
+
+}
+
+.feature-card:nth-child(2){
+
+animation-delay:1s;
+
+}
+
+.feature-card:nth-child(3){
+
+animation-delay:2s;
+
+}
+
+@keyframes featureFloat{
+
+0%,100%{
+transform:
+translateY(0px)
+rotate(-1deg);
+}
+
+50%{
+transform:
+translateY(-8px)
+rotate(1deg);
+}
+
+}
+
+/* BUTTON ENERGY */
+
+.calculator-grid button,
+.scientific-buttons button,
+.feature-card button{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+/* Energy Shine */
+
+.calculator-grid button::before,
+.scientific-buttons button::before,
+.feature-card button::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+left:-120%;
+
+width:100%;
+height:100%;
+
+background:
+linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,0.35),
+transparent
+);
+
+transition:0.6s;
+
+}
+
+.calculator-grid button:hover::before,
+.scientific-buttons button:hover::before,
+.feature-card button:hover::before{
+
+left:120%;
+
+}
+
+/* Alien Glow */
+
+.logo{
+
+animation:logoGlow 2s ease infinite;
+
+}
+
+@keyframes logoGlow{
+
+0%,100%{
+
+text-shadow:
+0 0 12px #7dff00,
+0 0 30px #00ff73;
+
+}
+
+50%{
+
+text-shadow:
+0 0 25px #b7ff00,
+0 0 50px #00ff73;
+
+}
+
+}
+
+/* Floating Green Particles */
+
+body::before,
+body::after{
+
+content:"";
+
+position:fixed;
+
+width:240px;
+height:240px;
+
+border-radius:50%;
+
+background:
+radial-gradient(
+circle,
+rgba(100,255,0,0.18),
+transparent 70%
+);
+
+filter:blur(30px);
+
+z-index:-2;
+
+animation:particleMove 10s ease infinite;
+
+}
+
+body::before{
+
+top:0;
+left:0;
+
+}
+
+body::after{
+
+bottom:0;
+right:0;
+
+animation-delay:5s;
+
+}
+
+@keyframes particleMove{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-50px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
