@@ -524,7 +524,6 @@ aiResult.innerHTML =
 
 }
 );
-
 window.onload = function(){
 
 const solveBtn = document.getElementById("solveBtn");
