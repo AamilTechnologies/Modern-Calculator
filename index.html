@@ -10,7 +10,9 @@ content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable
 
 <title>CyberCalc X</title>
 
-<link rel="stylesheet" href="style.css?v=1">
+<link rel="stylesheet" href="style.css?v=10">
+
+<link rel="manifest" href="manifest.json">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -18,13 +20,13 @@ content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable
 
 <body>
 
-<!-- Background -->
+<!-- Matrix -->
 
-<div class="bg"></div>
+<canvas id="matrix"></canvas>
 
 <!-- Calculator -->
 
-<div class="calculator">
+<div class="calculator" id="calculator">
 
 <!-- Top -->
 
@@ -34,11 +36,11 @@ content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable
 
 <div class="controls">
 
-<button>🌙</button>
+<button id="themeToggle">🌙</button>
 
-<button>🎤</button>
+<button id="voiceBtn">🎤</button>
 
-<button>⚡</button>
+<button id="dragBtn">⚡</button>
 
 </div>
 
@@ -48,7 +50,11 @@ content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable
 
 <input type="text" id="display" disabled>
 
-<!-- Sci Button -->
+<!-- History -->
+
+<div class="history" id="history"></div>
+
+<!-- Scientific -->
 
 <button id="scientificToggle">
 
@@ -56,7 +62,20 @@ Scientific Mode
 
 </button>
 
-<!-- Buttons -->
+<div class="scientific-buttons hidden"
+id="scientificButtons">
+
+<button onclick="appendValue('Math.sin(')">sin</button>
+
+<button onclick="appendValue('Math.cos(')">cos</button>
+
+<button onclick="appendValue('Math.tan(')">tan</button>
+
+<button onclick="appendValue('Math.sqrt(')">√</button>
+
+</div>
+
+<!-- Main Buttons -->
 
 <div class="buttons">
 
@@ -92,27 +111,37 @@ Scientific Mode
 
 <h2>💸 Currency Converter</h2>
 
-<input type="number" placeholder="Enter Amount">
+<input type="number"
+id="amount"
+placeholder="Enter Amount">
 
-<select>
-<option>USD</option>
-<option>INR</option>
-<option>EUR</option>
+<select id="fromCurrency">
+
+<option value="USD">USD</option>
+<option value="INR">INR</option>
+<option value="EUR">EUR</option>
+<option value="GBP">GBP</option>
+
 </select>
 
-<select>
-<option>INR</option>
-<option>USD</option>
-<option>EUR</option>
+<select id="toCurrency">
+
+<option value="INR">INR</option>
+<option value="USD">USD</option>
+<option value="EUR">EUR</option>
+<option value="GBP">GBP</option>
+
 </select>
 
-<button class="action-btn">
+<button id="convertBtn"
+class="action-btn">
 
 Convert Currency
 
 </button>
 
-<div class="result-box">
+<div class="result-box"
+id="result">
 
 Result Here
 
@@ -124,18 +153,21 @@ Result Here
 
 <div class="card">
 
-<h2>🤖 AI Math Solver</h2>
+<h2>🤖 AI Solver</h2>
 
 <input type="text"
-placeholder="2x+5=15">
+id="aiInput"
+placeholder="2+2*5">
 
-<button class="action-btn">
+<button id="solveBtn"
+class="action-btn">
 
 Solve Equation
 
 </button>
 
-<div class="result-box">
+<div class="result-box"
+id="aiResult">
 
 AI Answer
 
@@ -149,230 +181,33 @@ AI Answer
 
 <h2>📸 OCR Scanner</h2>
 
-<input type="file">
+<input type="file"
+id="imageInput">
 
-<button class="action-btn">
+<button id="scanBtn"
+class="action-btn">
 
 Scan Equation
 
 </button>
 
-<div class="result-box">
+<div class="result-box"
+id="ocrResult">
 
-Equation Result
+OCR Result
+
+</div>
 
 </div>
 
 </div>
 
-</div>
+<script src="https://unpkg.com/tesseract.js@v5.0.4/dist/tesseract.min.js"></script>
+
+<script src="particles.js"></script>
+
+<script defer src="script.js?v=10"></script>
 
 </body>
 
 </html>
-<script>
-const display = document.getElementById("display");
-
-function appendValue(val){
-display.value += val;
-}
-
-function clearDisplay(){
-display.value = "";
-}
-
-function deleteLast(){
-display.value = display.value.slice(0,-1);
-}
-
-function calculate(){
-try{
-display.value = eval(display.value);
-}
-catch{
-display.value = "Error";
-}
-}
-
-document.querySelectorAll(".buttons button").forEach(btn=>{
-
-const txt = btn.innerText;
-
-if(txt==="C"){
-btn.onclick=clearDisplay;
-}
-else if(txt==="DEL"){
-btn.onclick=deleteLast;
-}
-else if(txt==="="){
-btn.onclick=calculate;
-}
-else{
-
-btn.onclick=()=>appendValue(
-txt
-.replace("×","*")
-.replace("÷","/")
-.replace("−","-")
-);
-
-}
-
-});
-
-/* Disable Double Tap Zoom */
-
-let lastTouchEnd = 0;
-
-document.addEventListener(
-'touchend',
-function (event) {
-
-const now = (new Date()).getTime();
-
-if (now - lastTouchEnd <= 300) {
-event.preventDefault();
-}
-
-lastTouchEnd = now;
-
-}, false);
-
-</script>
-
-<script>
-
-const display = document.getElementById("display");
-
-/* SOUND */
-
-const clickSound = new Audio(
-"https://cdn.pixabay.com/download/audio/2022/03/10/audio_c8c8a73467.mp3?filename=click-124467.mp3"
-);
-
-function playSound(){
-
-clickSound.currentTime = 0;
-clickSound.play();
-
-}
-
-/* APPEND */
-
-function appendValue(val){
-
-playSound();
-
-display.value += val;
-
-navigator.vibrate(20);
-
-}
-
-/* CLEAR */
-
-function clearDisplay(){
-
-playSound();
-
-display.value = "";
-
-}
-
-/* DELETE */
-
-function deleteLast(){
-
-playSound();
-
-display.value =
-display.value.slice(0,-1);
-
-}
-
-/* CALCULATE */
-
-function calculate(){
-
-playSound();
-
-try{
-
-display.value = eval(display.value);
-
-}
-catch{
-
-display.value = "Error";
-
-}
-
-}
-
-/* BUTTON EVENTS */
-
-document.querySelectorAll(".buttons button")
-.forEach(btn=>{
-
-const txt = btn.innerText;
-
-if(txt==="C"){
-
-btn.onclick = clearDisplay;
-
-}
-else if(txt==="DEL"){
-
-btn.onclick = deleteLast;
-
-}
-else if(txt==="="){
-
-btn.onclick = calculate;
-
-}
-else{
-
-btn.onclick = ()=>appendValue(
-
-txt
-.replace("×","*")
-.replace("÷","/")
-.replace("−","-")
-
-);
-
-}
-
-});
-
-/* FAST TOUCH */
-
-document.addEventListener(
-"touchstart",
-()=>{},
-{passive:true}
-);
-
-/* NO DOUBLE ZOOM */
-
-let lastTouchEnd = 0;
-
-document.addEventListener(
-'touchend',
-function(event){
-
-const now =
-(new Date()).getTime();
-
-if(now-lastTouchEnd<=300){
-
-event.preventDefault();
-
-}
-
-lastTouchEnd = now;
-
-},false);
-
-</script>
