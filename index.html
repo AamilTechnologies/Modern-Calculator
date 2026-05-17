@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>CyberCalc X</title>
+
+<link rel="stylesheet" href="style.css?v=100">
+
+<link rel="manifest" href="manifest.json">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- MATRIX -->
+
+<canvas id="matrix"></canvas>
+
+<!-- CALCULATOR -->
+
+<div class="calculator">
+
+<!-- TOP -->
+
+<div class="top-bar">
+
+<h1 class="logo">CyberCalc X</h1>
+
+<div class="controls">
+
+<button id="themeToggle">🌙</button>
+
+<button id="voiceBtn">🎤</button>
+
+<button id="dragBtn">⚡</button>
+
+</div>
+
+</div>
+
+<!-- DISPLAY -->
+
+<input type="text"
+id="display"
+disabled>
+
+<!-- HISTORY -->
+
+<div class="history"
+id="history">
+
+</div>
+
+<!-- SCIENTIFIC -->
+
+<button id="scientificToggle">
+
+Scientific Mode
+
+</button>
+
+<div class="scientific-buttons hidden"
+id="scientificButtons">
+
+<button onclick="appendValue('Math.sin(')">sin</button>
+
+<button onclick="appendValue('Math.cos(')">cos</button>
+
+<button onclick="appendValue('Math.tan(')">tan</button>
+
+<button onclick="appendValue('Math.sqrt(')">√</button>
+
+</div>
+
+<!-- BUTTONS -->
+
+<div class="buttons">
+
+<button>C</button>
+<button>DEL</button>
+<button>%</button>
+<button class="op">÷</button>
+
+<button>7</button>
+<button>8</button>
+<button>9</button>
+<button class="op">×</button>
+
+<button>4</button>
+<button>5</button>
+<button>6</button>
+<button class="op">−</button>
+
+<button>1</button>
+<button>2</button>
+<button>3</button>
+<button class="op">+</button>
+
+<button class="zero">0</button>
+
+<button>.</button>
+
+<button class="equal">=</button>
+
+</div>
+
+<!-- CURRENCY -->
+
+<div class="card">
+
+<h2>💸 Currency Converter</h2>
+
+<input type="number"
+id="amount"
+placeholder="Enter Amount">
+
+<select id="fromCurrency">
+
+<option value="USD">USD</option>
+<option value="INR">INR</option>
+<option value="EUR">EUR</option>
+<option value="GBP">GBP</option>
+
+</select>
+
+<select id="toCurrency">
+
+<option value="INR">INR</option>
+<option value="USD">USD</option>
+<option value="EUR">EUR</option>
+<option value="GBP">GBP</option>
+
+</select>
+
+<button class="action-btn"
+id="convertBtn">
+
+Convert Currency
+
+</button>
+
+<div class="result-box"
+id="result">
+
+Result Here
+
+</div>
+
+</div>
+
+<!-- AI -->
+
+<div class="card">
+
+<h2>🤖 AI Solver</h2>
+
+<input type="text"
+id="aiInput"
+placeholder="2+2*5">
+
+<button class="action-btn"
+id="solveBtn">
+
+Solve Equation
+
+</button>
+
+<div class="result-box"
+id="aiResult">
+
+AI Answer
+
+</div>
+
+</div>
+
+<!-- OCR -->
+
+<div class="card">
+
+<h2>📸 OCR Scanner</h2>
+
+<input type="file"
+id="imageInput">
+
+<button class="action-btn"
+id="scanBtn">
+
+Scan Equation
+
+</button>
+
+<div class="result-box"
+id="ocrResult">
+
+OCR Result
+
+</div>
+
+</div>
+
+</div>
+
+<script src="https://unpkg.com/tesseract.js@v5.0.4/dist/tesseract.min.js"></script>
+
+<script src="particles.js"></script>
+
+<script src="script.js?v=100"></script>
+
+</body>
+
+</html>
